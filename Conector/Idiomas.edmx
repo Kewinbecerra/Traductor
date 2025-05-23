@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="idiomasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aleman">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" Nullable="false" />
+          <Property Name="Palabra" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="español">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" Nullable="false" />
+          <Property Name="Palabra" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="codigoingles" Type="int" />
+          <Property Name="codigofrances" Type="int" />
+          <Property Name="codigoaleman" Type="int" />
+        </EntityType>
+        <EntityType Name="Frances">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" Nullable="false" />
+          <Property Name="Palabra" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="Ingles">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" Nullable="false" />
+          <Property Name="Palabra" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <Association Name="FK__español__codigoa__300424B4">
+          <End Role="Aleman" Type="Self.Aleman" Multiplicity="0..1" />
+          <End Role="español" Type="Self.español" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aleman">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="español">
+              <PropertyRef Name="codigoaleman" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__español__codigof__2F10007B">
+          <End Role="Frances" Type="Self.Frances" Multiplicity="0..1" />
+          <End Role="español" Type="Self.español" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Frances">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="español">
+              <PropertyRef Name="codigofrances" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__español__codigoi__2E1BDC42">
+          <End Role="Ingles" Type="Self.Ingles" Multiplicity="0..1" />
+          <End Role="español" Type="Self.español" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingles">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="español">
+              <PropertyRef Name="codigoingles" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="idiomasModelStoreContainer">
+          <EntitySet Name="Aleman" EntityType="Self.Aleman" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="español" EntityType="Self.español" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Frances" EntityType="Self.Frances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingles" EntityType="Self.Ingles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__español__codigoa__300424B4" Association="Self.FK__español__codigoa__300424B4">
+            <End Role="Aleman" EntitySet="Aleman" />
+            <End Role="español" EntitySet="español" />
+          </AssociationSet>
+          <AssociationSet Name="FK__español__codigof__2F10007B" Association="Self.FK__español__codigof__2F10007B">
+            <End Role="Frances" EntitySet="Frances" />
+            <End Role="español" EntitySet="español" />
+          </AssociationSet>
+          <AssociationSet Name="FK__español__codigoi__2E1BDC42" Association="Self.FK__español__codigoi__2E1BDC42">
+            <End Role="Ingles" EntitySet="Ingles" />
+            <End Role="español" EntitySet="español" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="idiomasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aleman">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="Palabra" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="español" Relationship="Self.FK__español__codigoa__300424B4" FromRole="Aleman" ToRole="español" />
+        </EntityType>
+        <EntityType Name="español">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="Palabra" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codigoingles" Type="Int32" />
+          <Property Name="codigofrances" Type="Int32" />
+          <Property Name="codigoaleman" Type="Int32" />
+          <NavigationProperty Name="Aleman" Relationship="Self.FK__español__codigoa__300424B4" FromRole="español" ToRole="Aleman" />
+          <NavigationProperty Name="Frances" Relationship="Self.FK__español__codigof__2F10007B" FromRole="español" ToRole="Frances" />
+          <NavigationProperty Name="Ingles" Relationship="Self.FK__español__codigoi__2E1BDC42" FromRole="español" ToRole="Ingles" />
+        </EntityType>
+        <EntityType Name="Frances">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="Palabra" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="español" Relationship="Self.FK__español__codigof__2F10007B" FromRole="Frances" ToRole="español" />
+        </EntityType>
+        <EntityType Name="Ingles">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="Palabra" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="español" Relationship="Self.FK__español__codigoi__2E1BDC42" FromRole="Ingles" ToRole="español" />
+        </EntityType>
+        <Association Name="FK__español__codigoa__300424B4">
+          <End Role="Aleman" Type="Self.Aleman" Multiplicity="0..1" />
+          <End Role="español" Type="Self.español" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aleman">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="español">
+              <PropertyRef Name="codigoaleman" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__español__codigof__2F10007B">
+          <End Role="Frances" Type="Self.Frances" Multiplicity="0..1" />
+          <End Role="español" Type="Self.español" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Frances">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="español">
+              <PropertyRef Name="codigofrances" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__español__codigoi__2E1BDC42">
+          <End Role="Ingles" Type="Self.Ingles" Multiplicity="0..1" />
+          <End Role="español" Type="Self.español" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingles">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="español">
+              <PropertyRef Name="codigoingles" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="idiomasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aleman" EntityType="Self.Aleman" />
+          <EntitySet Name="español" EntityType="Self.español" />
+          <EntitySet Name="Frances" EntityType="Self.Frances" />
+          <EntitySet Name="Ingles" EntityType="Self.Ingles" />
+          <AssociationSet Name="FK__español__codigoa__300424B4" Association="Self.FK__español__codigoa__300424B4">
+            <End Role="Aleman" EntitySet="Aleman" />
+            <End Role="español" EntitySet="español" />
+          </AssociationSet>
+          <AssociationSet Name="FK__español__codigof__2F10007B" Association="Self.FK__español__codigof__2F10007B">
+            <End Role="Frances" EntitySet="Frances" />
+            <End Role="español" EntitySet="español" />
+          </AssociationSet>
+          <AssociationSet Name="FK__español__codigoi__2E1BDC42" Association="Self.FK__español__codigoi__2E1BDC42">
+            <End Role="Ingles" EntitySet="Ingles" />
+            <End Role="español" EntitySet="español" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="idiomasModelStoreContainer" CdmEntityContainer="idiomasEntities">
+          <EntitySetMapping Name="Aleman">
+            <EntityTypeMapping TypeName="idiomasModel.Aleman">
+              <MappingFragment StoreEntitySet="Aleman">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="Palabra" ColumnName="Palabra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="español">
+            <EntityTypeMapping TypeName="idiomasModel.español">
+              <MappingFragment StoreEntitySet="español">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="Palabra" ColumnName="Palabra" />
+                <ScalarProperty Name="codigoingles" ColumnName="codigoingles" />
+                <ScalarProperty Name="codigofrances" ColumnName="codigofrances" />
+                <ScalarProperty Name="codigoaleman" ColumnName="codigoaleman" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Frances">
+            <EntityTypeMapping TypeName="idiomasModel.Frances">
+              <MappingFragment StoreEntitySet="Frances">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="Palabra" ColumnName="Palabra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingles">
+            <EntityTypeMapping TypeName="idiomasModel.Ingles">
+              <MappingFragment StoreEntitySet="Ingles">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="Palabra" ColumnName="Palabra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
