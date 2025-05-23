@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Traductor", "Traductor\Traductor.csproj", "{5ED4695A-4F0C-4410-A926-8570039BBAF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api El gago", "Api El gago\Api El gago\Api El gago.csproj", "{1934A856-7521-49E2-993D-A1A989A661BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5ED4695A-4F0C-4410-A926-8570039BBAF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ED4695A-4F0C-4410-A926-8570039BBAF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ED4695A-4F0C-4410-A926-8570039BBAF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED4695A-4F0C-4410-A926-8570039BBAF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1934A856-7521-49E2-993D-A1A989A661BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1934A856-7521-49E2-993D-A1A989A661BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1934A856-7521-49E2-993D-A1A989A661BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1934A856-7521-49E2-993D-A1A989A661BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0016D53-A319-40F8-9472-0BA514F40D27}
+	EndGlobalSection
+EndGlobal
