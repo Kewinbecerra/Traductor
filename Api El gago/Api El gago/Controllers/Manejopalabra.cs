@@ -8,14 +8,9 @@ namespace Api_El_gago.Controllers
 {
     public class Manejopalabra
     {
-        public static bool manejoporcodigo(palabras palabra ) {
+        public static bool manejoporcodigo() {
             
-            SqlConnection conector = Models.DB.conectar("idiomas");
-            try
-            {
-               
-            }
-            catch { }
+          
         }
 
     }
