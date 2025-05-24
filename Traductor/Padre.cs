@@ -16,5 +16,12 @@ namespace Traductor
         {
             InitializeComponent();
         }
+
+        private void ToolEspañol_Ingles_Click(object sender, EventArgs e)
+        {
+            Español_Ingles ingles = new Español_Ingles();
+            ingles.MdiParent = this;
+            ingles.Show();
+        }
     }
 }

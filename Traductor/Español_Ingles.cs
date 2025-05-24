@@ -16,5 +16,20 @@ namespace Traductor
         {
             InitializeComponent();
         }
+
+        private void lbtraducir_Click(object sender, EventArgs e)
+        {
+            string url = $"http://localhost:53311/api/palabras/traduccion/{txtespañol.Text}/Ingles";
+            dynamic resultado = DBApi.Get(url);
+            if (resultado != null)
+            {
+                txtingles.Text = resultado.Palabra.ToString();
+                txtsinonimos.Text = string.Join("\r\n", resultado.Sinonimos);
+            }
+            else
+            {
+                MessageBox.Show("No se encontró la traducción.");
+            }
+        }
     }
 }

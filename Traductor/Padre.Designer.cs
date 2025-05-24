@@ -37,7 +37,7 @@
             this.eliminarPalabraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarPalabraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novedadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.traduccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolEspañol_Ingles = new System.Windows.Forms.ToolStripMenuItem();
             this.españolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.españolAlemanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,13 +70,13 @@
             // codigoToolStripMenuItem
             // 
             this.codigoToolStripMenuItem.Name = "codigoToolStripMenuItem";
-            this.codigoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.codigoToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
             this.codigoToolStripMenuItem.Text = "Codigo";
             // 
             // palabraEnEspañolToolStripMenuItem
             // 
             this.palabraEnEspañolToolStripMenuItem.Name = "palabraEnEspañolToolStripMenuItem";
-            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
             this.palabraEnEspañolToolStripMenuItem.Text = "Palabra en español";
             // 
             // actualizaciónToolStripMenuItem
@@ -92,36 +92,37 @@
             // ingresarPalabraToolStripMenuItem
             // 
             this.ingresarPalabraToolStripMenuItem.Name = "ingresarPalabraToolStripMenuItem";
-            this.ingresarPalabraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ingresarPalabraToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.ingresarPalabraToolStripMenuItem.Text = "Ingresar palabra";
             // 
             // eliminarPalabraToolStripMenuItem
             // 
             this.eliminarPalabraToolStripMenuItem.Name = "eliminarPalabraToolStripMenuItem";
-            this.eliminarPalabraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.eliminarPalabraToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.eliminarPalabraToolStripMenuItem.Text = "Eliminar palabra";
             // 
             // actualizarPalabraToolStripMenuItem
             // 
             this.actualizarPalabraToolStripMenuItem.Name = "actualizarPalabraToolStripMenuItem";
-            this.actualizarPalabraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.actualizarPalabraToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.actualizarPalabraToolStripMenuItem.Text = "Actualizar Palabra";
             // 
             // novedadesToolStripMenuItem
             // 
             this.novedadesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.traduccionToolStripMenuItem,
+            this.ToolEspañol_Ingles,
             this.españolToolStripMenuItem,
             this.españolAlemanToolStripMenuItem});
             this.novedadesToolStripMenuItem.Name = "novedadesToolStripMenuItem";
             this.novedadesToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
             this.novedadesToolStripMenuItem.Text = "Novedades";
             // 
-            // traduccionToolStripMenuItem
+            // ToolEspañol_Ingles
             // 
-            this.traduccionToolStripMenuItem.Name = "traduccionToolStripMenuItem";
-            this.traduccionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.traduccionToolStripMenuItem.Text = "Español-Inglés";
+            this.ToolEspañol_Ingles.Name = "ToolEspañol_Ingles";
+            this.ToolEspañol_Ingles.Size = new System.Drawing.Size(224, 26);
+            this.ToolEspañol_Ingles.Text = "Español-Inglés";
+            this.ToolEspañol_Ingles.Click += new System.EventHandler(this.ToolEspañol_Ingles_Click);
             // 
             // españolToolStripMenuItem
             // 
@@ -169,7 +170,7 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarPalabraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizarPalabraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novedadesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem traduccionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolEspañol_Ingles;
         private System.Windows.Forms.ToolStripMenuItem españolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem españolAlemanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
