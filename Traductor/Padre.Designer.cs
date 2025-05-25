@@ -30,7 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.consultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.codigoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.codigoTool = new System.Windows.Forms.ToolStripMenuItem();
             this.palabraEnEspañolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresarPalabraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,22 +61,23 @@
             // consultaToolStripMenuItem
             // 
             this.consultaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.codigoToolStripMenuItem,
+            this.codigoTool,
             this.palabraEnEspañolToolStripMenuItem});
             this.consultaToolStripMenuItem.Name = "consultaToolStripMenuItem";
             this.consultaToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.consultaToolStripMenuItem.Text = "Consulta";
             // 
-            // codigoToolStripMenuItem
+            // codigoTool
             // 
-            this.codigoToolStripMenuItem.Name = "codigoToolStripMenuItem";
-            this.codigoToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
-            this.codigoToolStripMenuItem.Text = "Codigo";
+            this.codigoTool.Name = "codigoTool";
+            this.codigoTool.Size = new System.Drawing.Size(224, 26);
+            this.codigoTool.Text = "Codigo";
+            this.codigoTool.Click += new System.EventHandler(this.codigoTool_Click);
             // 
             // palabraEnEspañolToolStripMenuItem
             // 
             this.palabraEnEspañolToolStripMenuItem.Name = "palabraEnEspañolToolStripMenuItem";
-            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
+            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.palabraEnEspañolToolStripMenuItem.Text = "Palabra en español";
             // 
             // actualizaciónToolStripMenuItem
@@ -92,19 +93,19 @@
             // ingresarPalabraToolStripMenuItem
             // 
             this.ingresarPalabraToolStripMenuItem.Name = "ingresarPalabraToolStripMenuItem";
-            this.ingresarPalabraToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
+            this.ingresarPalabraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ingresarPalabraToolStripMenuItem.Text = "Ingresar palabra";
             // 
             // eliminarPalabraToolStripMenuItem
             // 
             this.eliminarPalabraToolStripMenuItem.Name = "eliminarPalabraToolStripMenuItem";
-            this.eliminarPalabraToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
+            this.eliminarPalabraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.eliminarPalabraToolStripMenuItem.Text = "Eliminar palabra";
             // 
             // actualizarPalabraToolStripMenuItem
             // 
             this.actualizarPalabraToolStripMenuItem.Name = "actualizarPalabraToolStripMenuItem";
-            this.actualizarPalabraToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
+            this.actualizarPalabraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.actualizarPalabraToolStripMenuItem.Text = "Actualizar Palabra";
             // 
             // novedadesToolStripMenuItem
@@ -163,7 +164,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem codigoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem codigoTool;
         private System.Windows.Forms.ToolStripMenuItem palabraEnEspañolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ingresarPalabraToolStripMenuItem;

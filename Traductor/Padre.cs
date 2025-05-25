@@ -23,5 +23,12 @@ namespace Traductor
             ingles.MdiParent = this;
             ingles.Show();
         }
+
+        private void codigoTool_Click(object sender, EventArgs e)
+        {
+            PorCodigo porCodigo = new PorCodigo();
+            porCodigo.MdiParent = this;
+            porCodigo.Show();
+        }
     }
 }

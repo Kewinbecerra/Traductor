@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+using System.Windows.Forms;
+using Conector;
+
+namespace Api_El_gago.Models
+{
+    public class General  : ApiController
+    {
+        //metodo para obtener las tablas de cada idioma relacionado
+        public IQueryable Idiomas( idiomasEntities db,String idioma) 
+        {
+            switch (idioma)
+            {
+                case "Ingles":
+                    return db.Ingles;
+                case "Frances":
+                    return db.Frances;
+                case "Aleman":
+                    return db.Aleman;
+                default:
+                    return (IQueryable)NotFound();
+            }
+
+        }
+        //metodo para consultar la palabra para su idioma correspondiente
+        public dynamic Consultarfirst(idiomasEntities db, string idioma, string palabra)
+        {
+            var palabra_español = db.español.FirstOrDefault(x => x.Palabra == palabra);
+            if (palabra_español == null)
+            {
+                return NotFound();
+            }
+            switch (idioma)
+            {
+                case "Ingles":
+                    return db.Ingles.FirstOrDefault(p => p.codigo == palabra_español.codigoingles);
+                case "Frances":
+                    return db.Frances.FirstOrDefault(p => p.codigo == palabra_español.codigofrances);
+                case "Aleman":
+                    return db.Aleman.FirstOrDefault(p => p.codigo == palabra_español.codigoaleman);
+                default:
+                    return NotFound();
+            }
+        }
+        
+        //metodo para obtener la lista de sinonimos
+        public dynamic Consultarwhere(idiomasEntities db, string idioma, string palabra)
+        {
+            var palabra_español = db.español.FirstOrDefault(x => x.Palabra == palabra);
+            if (palabra_español == null)
+            {
+                return NotFound();
+            }
+            switch (idioma)
+            {
+                case "Ingles":
+                    return db.español.Where(p => p.codigoingles == palabra_español.codigoingles && p.Palabra != palabra)
+                    .Select(x => x.Palabra).ToList();
+                case "Frances":
+                    return db.español.Where(p => p.codigofrances == palabra_español.codigofrances && p.Palabra != palabra)
+                     .Select(x => x.Palabra).ToList();
+                case "Aleman":
+                    return db.español.Where(p => p.codigoaleman == palabra_español.codigoaleman && p.Palabra != palabra)
+                     .Select(x => x.Palabra).ToList();
+                default:
+                    return NotFound();
+            }
+        }
+    }
+}
