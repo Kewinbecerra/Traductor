@@ -84,7 +84,7 @@ namespace Traductor
 
         private void palabraEnEspañolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PorCodigo frmIngresar = new PorCodigo();
+            PorPalabra frmIngresar = new PorPalabra(this);
             frmIngresar.Show();
             this.Hide();
         }

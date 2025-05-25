@@ -12,9 +12,12 @@ namespace Traductor
 {
     public partial class PorPalabra : Form
     {
-        public PorPalabra()
+        private Padre padreForm;
+
+        public PorPalabra(Padre padre)
         {
             InitializeComponent();
+            this.padreForm = padre;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,6 +41,23 @@ namespace Traductor
             else
             {
                 MessageBox.Show("No se encontró la palabra.");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            DialogResult resultado = MessageBox.Show(
+          "¿Deseas volver al menú principal?",
+          "Confirmar salida",
+          MessageBoxButtons.YesNo,
+          MessageBoxIcon.Question
+      );
+
+            if (resultado == DialogResult.Yes)
+            {
+                this.Hide();
+                padreForm.Show();
             }
         }
     }
