@@ -26,11 +26,14 @@ namespace Traductor
                 dynamic datos = JsonConvert.DeserializeObject(datosJson);
                 return datos;
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show("ERROR " + ex.Message);
                 return null;
             }
-        }
+          }
+          
+        
         public static dynamic Post(string urlApi, string json, string autorizacion = null)
         {
             Method op = Method.Post;

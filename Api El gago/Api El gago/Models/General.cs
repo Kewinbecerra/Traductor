@@ -10,22 +10,7 @@ namespace Api_El_gago.Models
 {
     public class General  : ApiController
     {
-        //metodo para obtener las tablas de cada idioma relacionado
-        public IQueryable Idiomas( idiomasEntities db,String idioma) 
-        {
-            switch (idioma)
-            {
-                case "Ingles":
-                    return db.Ingles;
-                case "Frances":
-                    return db.Frances;
-                case "Aleman":
-                    return db.Aleman;
-                default:
-                    return (IQueryable)NotFound();
-            }
-
-        }
+      
         //metodo para consultar la palabra para su idioma correspondiente
         public dynamic Consultarfirst(idiomasEntities db, string idioma, string palabra)
         {
@@ -33,6 +18,7 @@ namespace Api_El_gago.Models
             if (palabra_español == null)
             {
                 return NotFound();
+                
             }
             switch (idioma)
             {
@@ -43,6 +29,7 @@ namespace Api_El_gago.Models
                 case "Aleman":
                     return db.Aleman.FirstOrDefault(p => p.codigo == palabra_español.codigoaleman);
                 default:
+                    MessageBox.Show("Idioma erroneo");
                     return NotFound();
             }
         }
@@ -67,6 +54,7 @@ namespace Api_El_gago.Models
                     return db.español.Where(p => p.codigoaleman == palabra_español.codigoaleman && p.Palabra != palabra)
                      .Select(x => x.Palabra).ToList();
                 default:
+                    MessageBox.Show("Idioma erroneo en consulta where");
                     return NotFound();
             }
         }

@@ -20,6 +20,7 @@ namespace Traductor
 
         private void btconsulta_Click(object sender, EventArgs e)
         {
+            
             string url = $"http://localhost:53311/api/palabras/Traduccioncodigo/{txtcodigo.Text}/{CBidiomas.Text}";
             dynamic resultado = DBApi.Get(url);
             if (resultado != null)

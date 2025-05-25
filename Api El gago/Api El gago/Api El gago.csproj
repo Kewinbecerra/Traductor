@@ -243,7 +243,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\Manejopalabra.cs" />
+    <Compile Include="Controllers\PalabraController.cs" />
     <Compile Include="Controllers\palabras.cs" />
     <Compile Include="Controllers\Traduccion.cs" />
     <Compile Include="Controllers\Traducciones.cs" />
