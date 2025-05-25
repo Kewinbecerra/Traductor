@@ -49,6 +49,7 @@
             this.button2.TabIndex = 50;
             this.button2.Text = "Salir";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lbtraducir
             // 
@@ -64,7 +65,7 @@
             // 
             this.txtespañol.Location = new System.Drawing.Point(271, 159);
             this.txtespañol.Name = "txtespañol";
-            this.txtespañol.Size = new System.Drawing.Size(146, 30);
+            this.txtespañol.Size = new System.Drawing.Size(146, 26);
             this.txtespañol.TabIndex = 48;
             // 
             // label4
@@ -72,7 +73,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(93, 162);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 25);
+            this.label4.Size = new System.Drawing.Size(67, 20);
             this.label4.TabIndex = 47;
             this.label4.Text = "Español";
             // 
@@ -81,7 +82,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(169, 190);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 25);
+            this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 46;
             // 
             // label1
@@ -91,7 +92,7 @@
             this.label1.Location = new System.Drawing.Point(320, 74);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 38);
+            this.label1.Size = new System.Drawing.Size(214, 31);
             this.label1.TabIndex = 43;
             this.label1.Text = "Español a Inglés";
             // 
@@ -100,7 +101,7 @@
             this.txtingles.Location = new System.Drawing.Point(271, 212);
             this.txtingles.Name = "txtingles";
             this.txtingles.ReadOnly = true;
-            this.txtingles.Size = new System.Drawing.Size(146, 30);
+            this.txtingles.Size = new System.Drawing.Size(146, 26);
             this.txtingles.TabIndex = 54;
             // 
             // label3
@@ -108,7 +109,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(93, 215);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 25);
+            this.label3.Size = new System.Drawing.Size(52, 20);
             this.label3.TabIndex = 53;
             this.label3.Text = "Inglés";
             // 
@@ -117,7 +118,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(169, 243);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 25);
+            this.label5.Size = new System.Drawing.Size(0, 20);
             this.label5.TabIndex = 52;
             // 
             // label6
@@ -125,7 +126,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(98, 279);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 25);
+            this.label6.Size = new System.Drawing.Size(83, 20);
             this.label6.TabIndex = 55;
             this.label6.Text = "Sinonimos";
             // 
@@ -139,7 +140,7 @@
             // 
             // Español_Ingles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
             this.Controls.Add(this.txtsinonimos);

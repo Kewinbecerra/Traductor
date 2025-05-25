@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtfrances = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txespanol = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtsinonimos = new System.Windows.Forms.TextBox();
+            this.txsinonimosFr = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtfrances
             // 
-            this.textBox1.Location = new System.Drawing.Point(363, 234);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(146, 26);
-            this.textBox1.TabIndex = 63;
+            this.txtfrances.Location = new System.Drawing.Point(363, 234);
+            this.txtfrances.Name = "txtfrances";
+            this.txtfrances.ReadOnly = true;
+            this.txtfrances.Size = new System.Drawing.Size(146, 26);
+            this.txtfrances.TabIndex = 63;
             // 
             // label3
             // 
@@ -74,6 +74,7 @@
             this.button2.TabIndex = 60;
             this.button2.Text = "Salir";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -83,13 +84,14 @@
             this.button1.TabIndex = 59;
             this.button1.Text = "Traducir";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // txespanol
             // 
-            this.textBox2.Location = new System.Drawing.Point(363, 181);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(146, 26);
-            this.textBox2.TabIndex = 58;
+            this.txespanol.Location = new System.Drawing.Point(363, 181);
+            this.txespanol.Name = "txespanol";
+            this.txespanol.Size = new System.Drawing.Size(146, 26);
+            this.txespanol.TabIndex = 58;
             // 
             // label4
             // 
@@ -119,13 +121,13 @@
             this.label1.TabIndex = 55;
             this.label1.Text = "Español a Francés";
             // 
-            // txtsinonimos
+            // txsinonimosFr
             // 
-            this.txtsinonimos.Location = new System.Drawing.Point(363, 307);
-            this.txtsinonimos.Multiline = true;
-            this.txtsinonimos.Name = "txtsinonimos";
-            this.txtsinonimos.Size = new System.Drawing.Size(146, 58);
-            this.txtsinonimos.TabIndex = 65;
+            this.txsinonimosFr.Location = new System.Drawing.Point(363, 307);
+            this.txsinonimosFr.Multiline = true;
+            this.txsinonimosFr.Name = "txsinonimosFr";
+            this.txsinonimosFr.Size = new System.Drawing.Size(146, 58);
+            this.txsinonimosFr.TabIndex = 65;
             // 
             // label6
             // 
@@ -141,14 +143,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
-            this.Controls.Add(this.txtsinonimos);
+            this.Controls.Add(this.txsinonimosFr);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtfrances);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txespanol);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -163,16 +165,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtfrances;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txespanol;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtsinonimos;
+        private System.Windows.Forms.TextBox txsinonimosFr;
         private System.Windows.Forms.Label label6;
     }
 }

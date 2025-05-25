@@ -12,9 +12,11 @@ namespace Traductor
 {
     public partial class Español_Ingles : Form
     {
-        public Español_Ingles()
+        private Padre padreForm;
+        public Español_Ingles(Padre padre)
         {
             InitializeComponent();
+            this.padreForm = padre;
         }
 
         private void lbtraducir_Click(object sender, EventArgs e)
@@ -29,6 +31,22 @@ namespace Traductor
             else
             {
                 MessageBox.Show("No se encontró la traducción.");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+        "¿Deseas volver al menú principal?",
+        "Confirmar salida",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question
+    );
+
+            if (resultado == DialogResult.Yes)
+            {
+                this.Hide();
+                padreForm.Show();
             }
         }
     }

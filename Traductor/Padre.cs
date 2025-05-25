@@ -19,9 +19,9 @@ namespace Traductor
 
         private void ToolEspañol_Ingles_Click(object sender, EventArgs e)
         {
-            Español_Ingles ingles = new Español_Ingles();
-            ingles.MdiParent = this;
-            ingles.Show();
+            Español_Ingles formEspIng = new Español_Ingles(this);
+            formEspIng.Show();
+            this.Hide();
         }
 
         private void codigoTool_Click(object sender, EventArgs e)
@@ -36,6 +36,29 @@ namespace Traductor
             Español_Aleman formEspAle = new Español_Aleman(this);
             formEspAle.Show();
             this.Hide();
+        }
+
+        private void españolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Español_Frances formEspFra = new Español_Frances(this);
+            formEspFra.Show();
+            this.Hide();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+           "¿Estás seguro que quieres salir de la aplicación?",
+           "Confirmar salida",
+           MessageBoxButtons.YesNo,
+           MessageBoxIcon.Question
+       );
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+
         }
     }
 }
