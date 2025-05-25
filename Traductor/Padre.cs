@@ -30,5 +30,12 @@ namespace Traductor
             porCodigo.MdiParent = this;
             porCodigo.Show();
         }
+
+        private void españolAlemanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Español_Aleman formEspAle = new Español_Aleman(this);
+            formEspAle.Show();
+            this.Hide();
+        }
     }
 }

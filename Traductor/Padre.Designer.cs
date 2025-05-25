@@ -54,7 +54,8 @@
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(600, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,20 +65,20 @@
             this.codigoTool,
             this.palabraEnEspañolToolStripMenuItem});
             this.consultaToolStripMenuItem.Name = "consultaToolStripMenuItem";
-            this.consultaToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.consultaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.consultaToolStripMenuItem.Text = "Consulta";
             // 
             // codigoTool
             // 
             this.codigoTool.Name = "codigoTool";
-            this.codigoTool.Size = new System.Drawing.Size(224, 26);
+            this.codigoTool.Size = new System.Drawing.Size(173, 22);
             this.codigoTool.Text = "Codigo";
             this.codigoTool.Click += new System.EventHandler(this.codigoTool_Click);
             // 
             // palabraEnEspañolToolStripMenuItem
             // 
             this.palabraEnEspañolToolStripMenuItem.Name = "palabraEnEspañolToolStripMenuItem";
-            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.palabraEnEspañolToolStripMenuItem.Text = "Palabra en español";
             // 
             // actualizaciónToolStripMenuItem
@@ -87,25 +88,25 @@
             this.eliminarPalabraToolStripMenuItem,
             this.actualizarPalabraToolStripMenuItem});
             this.actualizaciónToolStripMenuItem.Name = "actualizaciónToolStripMenuItem";
-            this.actualizaciónToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.actualizaciónToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.actualizaciónToolStripMenuItem.Text = "Actualización";
             // 
             // ingresarPalabraToolStripMenuItem
             // 
             this.ingresarPalabraToolStripMenuItem.Name = "ingresarPalabraToolStripMenuItem";
-            this.ingresarPalabraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ingresarPalabraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ingresarPalabraToolStripMenuItem.Text = "Ingresar palabra";
             // 
             // eliminarPalabraToolStripMenuItem
             // 
             this.eliminarPalabraToolStripMenuItem.Name = "eliminarPalabraToolStripMenuItem";
-            this.eliminarPalabraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.eliminarPalabraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarPalabraToolStripMenuItem.Text = "Eliminar palabra";
             // 
             // actualizarPalabraToolStripMenuItem
             // 
             this.actualizarPalabraToolStripMenuItem.Name = "actualizarPalabraToolStripMenuItem";
-            this.actualizarPalabraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.actualizarPalabraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.actualizarPalabraToolStripMenuItem.Text = "Actualizar Palabra";
             // 
             // novedadesToolStripMenuItem
@@ -115,42 +116,44 @@
             this.españolToolStripMenuItem,
             this.españolAlemanToolStripMenuItem});
             this.novedadesToolStripMenuItem.Name = "novedadesToolStripMenuItem";
-            this.novedadesToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
+            this.novedadesToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.novedadesToolStripMenuItem.Text = "Novedades";
             // 
             // ToolEspañol_Ingles
             // 
             this.ToolEspañol_Ingles.Name = "ToolEspañol_Ingles";
-            this.ToolEspañol_Ingles.Size = new System.Drawing.Size(224, 26);
+            this.ToolEspañol_Ingles.Size = new System.Drawing.Size(180, 22);
             this.ToolEspañol_Ingles.Text = "Español-Inglés";
             this.ToolEspañol_Ingles.Click += new System.EventHandler(this.ToolEspañol_Ingles_Click);
             // 
             // españolToolStripMenuItem
             // 
             this.españolToolStripMenuItem.Name = "españolToolStripMenuItem";
-            this.españolToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.españolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.españolToolStripMenuItem.Text = "Español-Francés";
             // 
             // españolAlemanToolStripMenuItem
             // 
             this.españolAlemanToolStripMenuItem.Name = "españolAlemanToolStripMenuItem";
-            this.españolAlemanToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.españolAlemanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.españolAlemanToolStripMenuItem.Text = "Español-Alemán";
+            this.españolAlemanToolStripMenuItem.Click += new System.EventHandler(this.españolAlemanToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(52, 24);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
             // Padre
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Padre";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
