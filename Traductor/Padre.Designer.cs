@@ -78,8 +78,9 @@
             // palabraEnEspañolToolStripMenuItem
             // 
             this.palabraEnEspañolToolStripMenuItem.Name = "palabraEnEspañolToolStripMenuItem";
-            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.palabraEnEspañolToolStripMenuItem.Text = "Palabra en español";
+            this.palabraEnEspañolToolStripMenuItem.Click += new System.EventHandler(this.palabraEnEspañolToolStripMenuItem_Click);
             // 
             // actualizaciónToolStripMenuItem
             // 
@@ -96,18 +97,21 @@
             this.ingresarPalabraToolStripMenuItem.Name = "ingresarPalabraToolStripMenuItem";
             this.ingresarPalabraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ingresarPalabraToolStripMenuItem.Text = "Ingresar palabra";
+            this.ingresarPalabraToolStripMenuItem.Click += new System.EventHandler(this.ingresarPalabraToolStripMenuItem_Click);
             // 
             // eliminarPalabraToolStripMenuItem
             // 
             this.eliminarPalabraToolStripMenuItem.Name = "eliminarPalabraToolStripMenuItem";
             this.eliminarPalabraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarPalabraToolStripMenuItem.Text = "Eliminar palabra";
+            this.eliminarPalabraToolStripMenuItem.Click += new System.EventHandler(this.eliminarPalabraToolStripMenuItem_Click);
             // 
             // actualizarPalabraToolStripMenuItem
             // 
             this.actualizarPalabraToolStripMenuItem.Name = "actualizarPalabraToolStripMenuItem";
             this.actualizarPalabraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.actualizarPalabraToolStripMenuItem.Text = "Actualizar Palabra";
+            this.actualizarPalabraToolStripMenuItem.Click += new System.EventHandler(this.actualizarPalabraToolStripMenuItem_Click);
             // 
             // novedadesToolStripMenuItem
             // 
@@ -122,21 +126,21 @@
             // ToolEspañol_Ingles
             // 
             this.ToolEspañol_Ingles.Name = "ToolEspañol_Ingles";
-            this.ToolEspañol_Ingles.Size = new System.Drawing.Size(180, 22);
+            this.ToolEspañol_Ingles.Size = new System.Drawing.Size(161, 22);
             this.ToolEspañol_Ingles.Text = "Español-Inglés";
             this.ToolEspañol_Ingles.Click += new System.EventHandler(this.ToolEspañol_Ingles_Click);
             // 
             // españolToolStripMenuItem
             // 
             this.españolToolStripMenuItem.Name = "españolToolStripMenuItem";
-            this.españolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.españolToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.españolToolStripMenuItem.Text = "Español-Francés";
             this.españolToolStripMenuItem.Click += new System.EventHandler(this.españolToolStripMenuItem_Click);
             // 
             // españolAlemanToolStripMenuItem
             // 
             this.españolAlemanToolStripMenuItem.Name = "españolAlemanToolStripMenuItem";
-            this.españolAlemanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.españolAlemanToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.españolAlemanToolStripMenuItem.Text = "Español-Alemán";
             this.españolAlemanToolStripMenuItem.Click += new System.EventHandler(this.españolAlemanToolStripMenuItem_Click);
             // 
@@ -155,7 +159,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Padre";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);

@@ -60,5 +60,33 @@ namespace Traductor
             }
 
         }
+
+        private void ingresarPalabraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IngresarPalabra frmIngresar = new IngresarPalabra();
+            frmIngresar.Show(); 
+            this.Hide();
+        }
+
+        private void eliminarPalabraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EliminarPalabra frmIngresar = new EliminarPalabra();
+            frmIngresar.Show();
+            this.Hide();
+        }
+
+        private void actualizarPalabraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarPalabra frmIngresar = new ActualizarPalabra();
+            frmIngresar.Show();
+            this.Hide();
+        }
+
+        private void palabraEnEspañolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PorCodigo frmIngresar = new PorCodigo();
+            frmIngresar.Show();
+            this.Hide();
+        }
     }
 }
