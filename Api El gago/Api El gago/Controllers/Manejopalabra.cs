@@ -75,7 +75,7 @@ public class PalabrasController : ApiController
                     default:
                         return NotFound();
                 }
-
+                as
             }
             //metodo para consultar la palabra para su idioma correspondiente
             public dynamic Consultarfirst(idiomasEntities db, string idioma,string palabra)
