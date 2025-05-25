@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json; 
-using RestSharp; 
+using RestSharp;
+using System;
 using System.IO; 
 using System.Net; 
 using System.Web; 
@@ -27,6 +28,44 @@ namespace Traductor
             }
             catch
             {
+                return null;
+            }
+        }
+        public static dynamic Post(string urlApi, string json, string autorizacion = null)
+        {
+            Method op = Method.Post;
+            return operaciones(urlApi, json, autorizacion = null, op);
+        }
+        public static dynamic Put(string urlApi, string json, string autorizacion = null)
+        {
+            Method op = Method.Put;
+            return operaciones(urlApi, json, autorizacion = null, op);
+        }
+        public static dynamic Delete(string urlApi, string json, string autorizacion = null)
+        {
+            Method op = Method.Delete;
+            return operaciones(urlApi, json, autorizacion = null, op);
+        }
+        private static dynamic operaciones(string urlApi, string json, string autorizacion,Method op)
+        {
+            try
+            {
+                var objCliente = new RestClient(urlApi);
+                var objPedido = new RestRequest();
+                objPedido.Method = op;
+                objPedido.AddHeader("content-type", "application/json");
+                objPedido.AddParameter("application/json", json, ParameterType.RequestBody);
+                if (autorizacion != null)
+                {
+                    objPedido.AddHeader("Authorization", autorizacion);
+                }
+                RestResponse objRespuesta = objCliente.Execute(objPedido);
+                dynamic datos = JsonConvert.DeserializeObject(objRespuesta.Content);
+                return datos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 return null;
             }
         }

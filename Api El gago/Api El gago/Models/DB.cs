@@ -52,7 +52,9 @@ namespace Api_El_gago.Models
             {
                 conector.Close();
             }
-            catch (SqlException eq) { }
+            catch{
+             
+            }
         }
     }
 }

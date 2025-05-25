@@ -10,6 +10,11 @@ namespace Api_El_gago.Controllers
        
             public int Id { get; set; }
             public string Palabra { get; set; }
+            public int Id_ingles { get; set; }
+            
+            public int Id_frances {  get; set; }
+
+            public int Id_aleman {  get; set; }
          
 
          

@@ -124,6 +124,7 @@
     <Compile Include="Padre.Designer.cs">
       <DependentUpon>Padre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Palabras.cs" />
     <Compile Include="PorCodigo.cs">
       <SubType>Form</SubType>
     </Compile>

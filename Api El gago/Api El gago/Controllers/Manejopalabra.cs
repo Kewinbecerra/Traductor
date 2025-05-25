@@ -18,6 +18,7 @@ namespace Api_El_gago.Controllers
        [RoutePrefix("api/palabras")]
 public class PalabrasController : ApiController
 {
+    // Metodo Get para  hacer las consultas por codigo
     // GET api/palabras/sinonimos/5
     [HttpGet]
     [Route("Traduccioncodigo/{codigo}/{idioma}")]
@@ -91,7 +92,7 @@ public class PalabrasController : ApiController
                     }
         }
     }
-    
+    //Metodos Get para hacer las consultas por palabras y para traducir
     // GET api/palabras/traduccion/perro/Ingles
     [HttpGet]
     [Route("traduccion/{palabra}/{idioma}")]
@@ -118,7 +119,34 @@ public class PalabrasController : ApiController
                    return Ok(resultado);
              }   
              }
-            private HttpResponseMessage opercion([FromBody] Palabras objCuenta, EntityState operacion)
+        [HttpPost]
+        [Route("Insertar")]
+            public HttpResponseMessage Post([FromBody] Palabras palabras)
+        {
+          
+            EntityState entidad = EntityState.Added;
+            return opercion(palabras, entidad);
+
+        }
+        [HttpPut]
+        [Route("Actualizar")]
+        public HttpResponseMessage Put([FromBody]Palabras palabras)
+        {
+
+            EntityState entidad = EntityState.Modified;
+            return opercion(palabras, entidad);
+
+        }
+        [HttpDelete]
+        [Route("DELETE")]
+        public HttpResponseMessage Delete([FromBody] Palabras palabras)
+        {
+
+            EntityState entidad = EntityState.Deleted;
+            return opercion(palabras, entidad);
+
+        }
+        private HttpResponseMessage opercion([FromBody] Palabras objpalabra, EntityState operacion)
             {
                 int resp = 0;
                 HttpResponseMessage objMenRespuesta = null;
@@ -126,7 +154,7 @@ public class PalabrasController : ApiController
                 {
                     using (idiomasEntities objEntidad = new idiomasEntities())
                     {
-                        objEntidad.Entry(objCuenta).State = operacion;
+                        objEntidad.Entry(objpalabra).State = operacion;
                         resp = objEntidad.SaveChanges();
                         objMenRespuesta = Request.CreateResponse(HttpStatusCode.OK, resp);
                     }
