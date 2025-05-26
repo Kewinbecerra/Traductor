@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Windows.Forms;
+using Api_El_gago.Controllers;
 using Conector;
 
 namespace Api_El_gago.Models
@@ -56,7 +57,23 @@ namespace Api_El_gago.Models
                 default:
                     MessageBox.Show("Idioma erroneo en consulta where");
                     return NotFound();
-            }
+            }        
+        }
+        public dynamic ConsultaTraducciones(string palabra_español, idiomasEntities db)
+        {
+            var palabra_ingles = Consultarfirst(db, "Ingles", palabra_español);
+            var palabra_frances = Consultarfirst(db, "Frances", palabra_español);
+            var palabra_aleman = Consultarfirst(db, "Aleman", palabra_español);
+            var sinonimo = Consultarwhere(db, "Ingles", palabra_español);
+            var resultado = new Traducciones
+            {
+                PalabraEs = palabra_español,
+                PalabraIng = palabra_ingles.Palabra,
+                PalabraFr = palabra_frances.Palabra,
+                PalabraAl = palabra_aleman.Palabra,
+                Sinonimos = sinonimo
+            };
+            return resultado;
         }
     }
 }

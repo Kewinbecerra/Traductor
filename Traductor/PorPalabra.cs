@@ -23,9 +23,8 @@ namespace Traductor
         private void button1_Click(object sender, EventArgs e)
         {
             string palabra = txtpalabra.Text;
-            string idioma = CBidiomas.Text;
 
-            string url = $"http://localhost:53311/api/palabras/Traduccionpalabra/{palabra}/{idioma}";
+            string url = $"http://localhost:53311/api/palabras/Traduccion/{palabra}/Español";
             dynamic resultado = DBApi.Get(url);
 
             if (resultado != null)
@@ -40,7 +39,7 @@ namespace Traductor
             }
             else
             {
-                MessageBox.Show("No se encontró la palabra.");
+                MessageBox.Show("Esa palabra no se encuentra en nuestra base de datos. \r\nporfavor ingresar una palabra valida en español.");
             }
         }
 

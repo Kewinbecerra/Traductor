@@ -38,18 +38,7 @@ namespace Api_El_gago.Controllers
                             return NotFound();
                         }
                         string palabra_español = palabra.Palabra.ToString();
-                        var palabra_ingles = gb.Consultarfirst(db, "Ingles", palabra_español);
-                        var palabra_frances = gb.Consultarfirst(db, "Frances", palabra_español);
-                        var palabra_aleman = gb.Consultarfirst(db, "Aleman", palabra_español);
-                        var sinonimo = gb.Consultarwhere(db, "Ingles", palabra_español);
-                        var resultado = new Traducciones
-                        {
-                            PalabraEs = palabra_español,
-                            PalabraIng = palabra_ingles.Palabra,
-                            PalabraFr = palabra_frances.Palabra,
-                            PalabraAl = palabra_aleman.Palabra,
-                            Sinonimos = sinonimo
-                        };
+                        var resultado = gb.ConsultaTraducciones(palabra_español,db);
                         return Ok(resultado);
                     }
                     catch (Exception ex)
@@ -100,31 +89,41 @@ namespace Api_El_gago.Controllers
                 try
                 {
                     General gb = new General();
+                    if (idioma == "Español")
+                    {
+                        var resultado = gb.ConsultaTraducciones(palabra, db);
+                        return Ok(resultado);
 
-                    var palabra_idioma = gb.Consultarfirst(db, idioma, palabra);
+                    }
+                    else
+                    {
 
-                    if (palabra_idioma == null)
-                    {
-                        MessageBox.Show("ERROR, Palabra llego null");
-                        return NotFound();
-                    }
+                        var palabra_idioma = gb.Consultarfirst(db, idioma, palabra);
 
-                    var sinonimo = gb.Consultarwhere(db, idioma, palabra);
-                    if (sinonimo == null)
-                    {
-                        return NotFound();
+                        if (palabra_idioma == null)
+                        {
+                            MessageBox.Show("ERROR, Palabra llego null");
+                            return NotFound();
+                        }
+
+                        var sinonimo = gb.Consultarwhere(db, idioma, palabra);
+                        if (sinonimo == null)
+                        {
+                            return NotFound();
+                        }
+                        var resultado = new Traduccion
+                        {
+                            Palabra = palabra_idioma.Palabra,
+                            Codigo = palabra_idioma.codigo,
+                            Sinonimos = sinonimo
+                        };
+                        if (resultado == null)
+                        {
+                            return NotFound();
+                        }
+
+                        return Ok(resultado);
                     }
-                    var resultado = new Traduccion
-                    {
-                        Palabra = palabra_idioma.Palabra,
-                        Codigo = palabra_idioma.codigo,
-                        Sinonimos = sinonimo
-                    };
-                    if (resultado == null)
-                    {
-                        return NotFound();
-                    }
-                    return Ok(resultado);
                 }catch (Exception ex) { return InternalServerError(ex); }
             }
         }
