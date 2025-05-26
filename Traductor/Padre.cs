@@ -110,7 +110,7 @@ namespace Traductor
 
         private void actualizarPalabraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ActualizarPalabra frmIngresar = new ActualizarPalabra();
+            ActualizarPalabra frmIngresar = new ActualizarPalabra(this);
             frmIngresar.Show();
             this.Hide();
         }

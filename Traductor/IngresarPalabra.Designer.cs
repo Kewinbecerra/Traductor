@@ -114,6 +114,11 @@
             // cmbIdioma
             // 
             this.cmbIdioma.FormattingEnabled = true;
+            this.cmbIdioma.Items.AddRange(new object[] {
+            "Español",
+            "Ingles",
+            "Frances",
+            "Aleman"});
             this.cmbIdioma.Location = new System.Drawing.Point(292, 148);
             this.cmbIdioma.Name = "cmbIdioma";
             this.cmbIdioma.Size = new System.Drawing.Size(137, 28);
