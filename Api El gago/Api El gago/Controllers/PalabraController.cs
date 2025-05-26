@@ -25,7 +25,7 @@ namespace Api_El_gago.Controllers
         {
             using (idiomasEntities db = new idiomasEntities())
             {
-                General gb = new General();
+                General_controllers gb = new General_controllers();
 
                 if (idioma == "Español")
                 {
@@ -88,7 +88,7 @@ namespace Api_El_gago.Controllers
             {
                 try
                 {
-                    General gb = new General();
+                    General_controllers gb = new General_controllers();
                     if (idioma == "Español")
                     {
                         var resultado = gb.ConsultaTraducciones(palabra, db);

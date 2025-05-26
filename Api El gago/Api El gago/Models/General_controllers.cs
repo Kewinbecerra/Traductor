@@ -9,7 +9,7 @@ using Conector;
 
 namespace Api_El_gago.Models
 {
-    public class General  : ApiController
+    public class General_controllers  : ApiController
     {
       
         //metodo para consultar la palabra para su idioma correspondiente
