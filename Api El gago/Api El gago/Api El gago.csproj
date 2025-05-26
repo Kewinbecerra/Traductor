@@ -247,6 +247,7 @@
     <Compile Include="Controllers\palabras.cs" />
     <Compile Include="Controllers\Traduccion.cs" />
     <Compile Include="Controllers\Traducciones.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

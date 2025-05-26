@@ -76,6 +76,24 @@
       <DependentUpon>Idiomas.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuarios.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Usuarios.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Usuarios.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Usuarios.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios_roles.cs">
+      <DependentUpon>Usuarios.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Idiomas.edmx">
@@ -89,6 +107,13 @@
       <DependentUpon>Idiomas.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <EntityDeploy Include="Usuarios.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Usuarios.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Usuarios.edmx.diagram">
+      <DependentUpon>Usuarios.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Idiomas.Context.tt">
@@ -100,6 +125,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Idiomas.edmx</DependentUpon>
       <LastGenOutput>Idiomas.cs</LastGenOutput>
+    </Content>
+    <Content Include="Usuarios.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Usuarios.edmx</DependentUpon>
+      <LastGenOutput>Usuarios.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Usuarios.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Usuarios.edmx</DependentUpon>
+      <LastGenOutput>Usuarios.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
