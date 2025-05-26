@@ -96,7 +96,7 @@ namespace Traductor
 
         private void ingresarPalabraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IngresarPalabra frmIngresar = new IngresarPalabra();
+            IngresarPalabra frmIngresar = new IngresarPalabra(this);
             frmIngresar.Show(); 
             this.Hide();
         }

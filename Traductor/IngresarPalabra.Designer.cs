@@ -28,49 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.txtPalabra = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lbCodigo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbIdioma = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button2
+            // btnSalir
             // 
-            this.button2.Location = new System.Drawing.Point(578, 267);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 54);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Salir";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSalir.Location = new System.Drawing.Point(578, 267);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(125, 54);
+            this.btnSalir.TabIndex = 27;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // button1
+            // btnRegistrar
             // 
-            this.button1.Location = new System.Drawing.Point(578, 181);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 54);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Registrar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Location = new System.Drawing.Point(578, 181);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(125, 54);
+            this.btnRegistrar.TabIndex = 26;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
-            // textBox2
+            // txtPalabra
             // 
-            this.textBox2.Location = new System.Drawing.Point(292, 272);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 30);
-            this.textBox2.TabIndex = 25;
+            this.txtPalabra.Location = new System.Drawing.Point(292, 272);
+            this.txtPalabra.Name = "txtPalabra";
+            this.txtPalabra.Size = new System.Drawing.Size(133, 26);
+            this.txtPalabra.TabIndex = 25;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(179, 272);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 25);
+            this.label4.Size = new System.Drawing.Size(63, 20);
             this.label4.TabIndex = 24;
             this.label4.Text = "Palabra";
             // 
@@ -79,22 +81,22 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(194, 192);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 25);
+            this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 23;
             // 
-            // textBox1
+            // txtCodigo
             // 
-            this.textBox1.Location = new System.Drawing.Point(292, 210);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 30);
-            this.textBox1.TabIndex = 22;
+            this.txtCodigo.Location = new System.Drawing.Point(292, 210);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(133, 26);
+            this.txtCodigo.TabIndex = 22;
             // 
             // lbCodigo
             // 
             this.lbCodigo.AutoSize = true;
             this.lbCodigo.Location = new System.Drawing.Point(183, 210);
             this.lbCodigo.Name = "lbCodigo";
-            this.lbCodigo.Size = new System.Drawing.Size(75, 25);
+            this.lbCodigo.Size = new System.Drawing.Size(59, 20);
             this.lbCodigo.TabIndex = 21;
             this.lbCodigo.Text = "Codigo";
             // 
@@ -105,40 +107,40 @@
             this.label1.Location = new System.Drawing.Point(366, 63);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 38);
+            this.label1.Size = new System.Drawing.Size(214, 31);
             this.label1.TabIndex = 20;
             this.label1.Text = "Ingresar Palabra";
             // 
-            // comboBox1
+            // cmbIdioma
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(292, 148);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(137, 33);
-            this.comboBox1.TabIndex = 28;
+            this.cmbIdioma.FormattingEnabled = true;
+            this.cmbIdioma.Location = new System.Drawing.Point(292, 148);
+            this.cmbIdioma.Name = "cmbIdioma";
+            this.cmbIdioma.Size = new System.Drawing.Size(137, 28);
+            this.cmbIdioma.TabIndex = 28;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(184, 148);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 25);
+            this.label3.Size = new System.Drawing.Size(57, 20);
             this.label3.TabIndex = 29;
             this.label3.Text = "Idioma";
             // 
             // IngresarPalabra
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.cmbIdioma);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.btnRegistrar);
+            this.Controls.Add(this.txtPalabra);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lbCodigo);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -152,15 +154,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.TextBox txtPalabra;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lbCodigo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbIdioma;
         private System.Windows.Forms.Label label3;
     }
 }
