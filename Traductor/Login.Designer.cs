@@ -33,8 +33,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbCorreo = new System.Windows.Forms.TextBox();
             this.tbClave = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbRol = new System.Windows.Forms.ComboBox();
             this.btIngresar = new System.Windows.Forms.Button();
             this.btSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -84,29 +82,9 @@
             this.tbClave.Size = new System.Drawing.Size(114, 20);
             this.tbClave.TabIndex = 4;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(207, 220);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Rol:";
-            // 
-            // cbRol
-            // 
-            this.cbRol.FormattingEnabled = true;
-            this.cbRol.Items.AddRange(new object[] {
-            "Administrador",
-            "Usuario"});
-            this.cbRol.Location = new System.Drawing.Point(295, 220);
-            this.cbRol.Name = "cbRol";
-            this.cbRol.Size = new System.Drawing.Size(121, 21);
-            this.cbRol.TabIndex = 7;
-            // 
             // btIngresar
             // 
-            this.btIngresar.Location = new System.Drawing.Point(251, 300);
+            this.btIngresar.Location = new System.Drawing.Point(264, 228);
             this.btIngresar.Name = "btIngresar";
             this.btIngresar.Size = new System.Drawing.Size(75, 23);
             this.btIngresar.TabIndex = 8;
@@ -116,7 +94,7 @@
             // 
             // btSalir
             // 
-            this.btSalir.Location = new System.Drawing.Point(376, 300);
+            this.btSalir.Location = new System.Drawing.Point(388, 228);
             this.btSalir.Name = "btSalir";
             this.btSalir.Size = new System.Drawing.Size(75, 23);
             this.btSalir.TabIndex = 9;
@@ -131,8 +109,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btSalir);
             this.Controls.Add(this.btIngresar);
-            this.Controls.Add(this.cbRol);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.tbClave);
             this.Controls.Add(this.tbCorreo);
             this.Controls.Add(this.label3);
@@ -153,8 +129,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbCorreo;
         private System.Windows.Forms.TextBox tbClave;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbRol;
         private System.Windows.Forms.Button btIngresar;
         private System.Windows.Forms.Button btSalir;
     }
