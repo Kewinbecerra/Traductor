@@ -12,10 +12,43 @@ namespace Traductor
 {
     public partial class Padre : Form
     {
-        public Padre()
+        private Login LoginForm;
+        private string RolUsuario;
+        public Padre(Login login, string rolUsuario)
         {
             InitializeComponent();
+            this.LoginForm = login;
+            this.RolUsuario = rolUsuario;
+            ConfigurarAccesoPorRol();
         }
+
+        private void ConfigurarAccesoPorRol()
+        {
+            if (RolUsuario == "Usuario")
+            {
+                ingresarPalabraToolStripMenuItem.Enabled = false;
+                eliminarPalabraToolStripMenuItem.Enabled = false;
+                actualizarPalabraToolStripMenuItem.Enabled = false;
+                ToolEspañol_Ingles.Enabled = true;
+                españolAlemanToolStripMenuItem.Enabled = true;
+                españolToolStripMenuItem.Enabled = true;
+                palabraEnEspañolToolStripMenuItem.Enabled = true;
+                codigoTool.Enabled = true;
+
+            }
+            else if (RolUsuario == "Administrador")
+            {
+                ingresarPalabraToolStripMenuItem.Enabled = true;
+                eliminarPalabraToolStripMenuItem.Enabled = true;
+                actualizarPalabraToolStripMenuItem.Enabled = true;
+                ToolEspañol_Ingles.Enabled = true;
+                españolAlemanToolStripMenuItem.Enabled = true;
+                españolToolStripMenuItem.Enabled = true;
+                palabraEnEspañolToolStripMenuItem.Enabled = true;
+                codigoTool.Enabled = true;
+            }
+        }
+
 
         private void ToolEspañol_Ingles_Click(object sender, EventArgs e)
         {

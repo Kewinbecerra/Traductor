@@ -16,7 +16,7 @@ namespace Traductor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Padre());
+            Application.Run(new Login());
         }
     }
 }

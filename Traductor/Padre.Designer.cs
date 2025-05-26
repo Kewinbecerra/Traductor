@@ -78,7 +78,7 @@
             // palabraEnEspañolToolStripMenuItem
             // 
             this.palabraEnEspañolToolStripMenuItem.Name = "palabraEnEspañolToolStripMenuItem";
-            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.palabraEnEspañolToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.palabraEnEspañolToolStripMenuItem.Text = "Palabra en español";
             this.palabraEnEspañolToolStripMenuItem.Click += new System.EventHandler(this.palabraEnEspañolToolStripMenuItem_Click);
             // 
@@ -95,21 +95,21 @@
             // ingresarPalabraToolStripMenuItem
             // 
             this.ingresarPalabraToolStripMenuItem.Name = "ingresarPalabraToolStripMenuItem";
-            this.ingresarPalabraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ingresarPalabraToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.ingresarPalabraToolStripMenuItem.Text = "Ingresar palabra";
             this.ingresarPalabraToolStripMenuItem.Click += new System.EventHandler(this.ingresarPalabraToolStripMenuItem_Click);
             // 
             // eliminarPalabraToolStripMenuItem
             // 
             this.eliminarPalabraToolStripMenuItem.Name = "eliminarPalabraToolStripMenuItem";
-            this.eliminarPalabraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarPalabraToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.eliminarPalabraToolStripMenuItem.Text = "Eliminar palabra";
             this.eliminarPalabraToolStripMenuItem.Click += new System.EventHandler(this.eliminarPalabraToolStripMenuItem_Click);
             // 
             // actualizarPalabraToolStripMenuItem
             // 
             this.actualizarPalabraToolStripMenuItem.Name = "actualizarPalabraToolStripMenuItem";
-            this.actualizarPalabraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.actualizarPalabraToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.actualizarPalabraToolStripMenuItem.Text = "Actualizar Palabra";
             this.actualizarPalabraToolStripMenuItem.Click += new System.EventHandler(this.actualizarPalabraToolStripMenuItem_Click);
             // 
@@ -157,7 +157,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.menuStrip1);
-            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Padre";
