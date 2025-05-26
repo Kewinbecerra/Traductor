@@ -103,7 +103,7 @@ namespace Traductor
 
         private void eliminarPalabraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EliminarPalabra frmIngresar = new EliminarPalabra();
+            EliminarPalabra frmIngresar = new EliminarPalabra(this);
             frmIngresar.Show();
             this.Hide();
         }
