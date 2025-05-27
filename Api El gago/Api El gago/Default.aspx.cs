@@ -13,13 +13,10 @@ namespace Api_El_gago
         {
 
         }
-        protected void btnTraducir_Click(object sender, EventArgs e)
-        {
-            string palabra = txtPalabra.Text;
-            string url = $"http://localhost:53311/api/palabras/traduccion/{palabra}/Ingles";
-            dynamic resultado = DBApi.Get(url);
-
-            if (resultado != null)
+        protected void btnTraducir_Click(object sender, EventArgs e) { 
+            
+          
+           /* if ()
             {
                 lblIngles.Text = "Inglés: " + resultado.PalabraIng;
                 lblFrances.Text = "Francés: " + resultado.PalabraFr;
@@ -31,9 +28,8 @@ namespace Api_El_gago
                 lblIngles.Text = "Inglés: No encontrado";
                 lblFrances.Text = "Francés: No encontrado";
                 lblAleman.Text = "Alemán: No encontrado";
-                lblSinonimos.Text = "Sinónimos: No encontrados";
+                lblSinonimos.Text = "Sinónimos: No encontrados";*/
             }
         }
 
     }
-}
