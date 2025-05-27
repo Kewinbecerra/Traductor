@@ -45,7 +45,7 @@
             this.txtCodigoAleman = new System.Windows.Forms.TextBox();
             this.lblCodigoAleman = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtCodigoEspañol = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -73,7 +73,7 @@
             // 
             this.txtPalabra.Location = new System.Drawing.Point(292, 209);
             this.txtPalabra.Name = "txtPalabra";
-            this.txtPalabra.Size = new System.Drawing.Size(133, 26);
+            this.txtPalabra.Size = new System.Drawing.Size(133, 30);
             this.txtPalabra.TabIndex = 25;
             // 
             // label4
@@ -81,7 +81,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(177, 212);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 20);
+            this.label4.Size = new System.Drawing.Size(79, 25);
             this.label4.TabIndex = 24;
             this.label4.Text = "Palabra";
             // 
@@ -90,14 +90,14 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(194, 192);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 20);
+            this.label2.Size = new System.Drawing.Size(0, 25);
             this.label2.TabIndex = 23;
             // 
             // txtCodigoIngles
             // 
             this.txtCodigoIngles.Location = new System.Drawing.Point(292, 284);
             this.txtCodigoIngles.Name = "txtCodigoIngles";
-            this.txtCodigoIngles.Size = new System.Drawing.Size(133, 26);
+            this.txtCodigoIngles.Size = new System.Drawing.Size(133, 30);
             this.txtCodigoIngles.TabIndex = 22;
             // 
             // lblCodigoIngles
@@ -105,7 +105,7 @@
             this.lblCodigoIngles.AutoSize = true;
             this.lblCodigoIngles.Location = new System.Drawing.Point(143, 284);
             this.lblCodigoIngles.Name = "lblCodigoIngles";
-            this.lblCodigoIngles.Size = new System.Drawing.Size(110, 20);
+            this.lblCodigoIngles.Size = new System.Drawing.Size(138, 25);
             this.lblCodigoIngles.TabIndex = 21;
             this.lblCodigoIngles.Text = "Código Inglés:";
             // 
@@ -116,7 +116,7 @@
             this.label1.Location = new System.Drawing.Point(365, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 31);
+            this.label1.Size = new System.Drawing.Size(257, 38);
             this.label1.TabIndex = 20;
             this.label1.Text = "Ingresar Palabra";
             // 
@@ -130,7 +130,7 @@
             "Aleman"});
             this.cmbIdioma.Location = new System.Drawing.Point(288, 105);
             this.cmbIdioma.Name = "cmbIdioma";
-            this.cmbIdioma.Size = new System.Drawing.Size(137, 28);
+            this.cmbIdioma.Size = new System.Drawing.Size(137, 33);
             this.cmbIdioma.TabIndex = 28;
             this.cmbIdioma.SelectedIndexChanged += new System.EventHandler(this.cmbIdioma_SelectedIndexChanged);
             // 
@@ -139,7 +139,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(183, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 20);
+            this.label3.Size = new System.Drawing.Size(70, 25);
             this.label3.TabIndex = 29;
             this.label3.Text = "Idioma";
             // 
@@ -148,14 +148,14 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(490, 329);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 20);
+            this.label5.Size = new System.Drawing.Size(0, 25);
             this.label5.TabIndex = 32;
             // 
             // txtCodigoFrances
             // 
             this.txtCodigoFrances.Location = new System.Drawing.Point(292, 326);
             this.txtCodigoFrances.Name = "txtCodigoFrances";
-            this.txtCodigoFrances.Size = new System.Drawing.Size(133, 26);
+            this.txtCodigoFrances.Size = new System.Drawing.Size(133, 30);
             this.txtCodigoFrances.TabIndex = 31;
             // 
             // lblCodigoFrances
@@ -163,7 +163,7 @@
             this.lblCodigoFrances.AutoSize = true;
             this.lblCodigoFrances.Location = new System.Drawing.Point(135, 329);
             this.lblCodigoFrances.Name = "lblCodigoFrances";
-            this.lblCodigoFrances.Size = new System.Drawing.Size(125, 20);
+            this.lblCodigoFrances.Size = new System.Drawing.Size(157, 25);
             this.lblCodigoFrances.TabIndex = 30;
             this.lblCodigoFrances.Text = "Código Francés:";
             // 
@@ -172,14 +172,14 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(472, 382);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 20);
+            this.label7.Size = new System.Drawing.Size(0, 25);
             this.label7.TabIndex = 35;
             // 
             // txtCodigoAleman
             // 
             this.txtCodigoAleman.Location = new System.Drawing.Point(292, 382);
             this.txtCodigoAleman.Name = "txtCodigoAleman";
-            this.txtCodigoAleman.Size = new System.Drawing.Size(133, 26);
+            this.txtCodigoAleman.Size = new System.Drawing.Size(133, 30);
             this.txtCodigoAleman.TabIndex = 34;
             // 
             // lblCodigoAleman
@@ -187,7 +187,7 @@
             this.lblCodigoAleman.AutoSize = true;
             this.lblCodigoAleman.Location = new System.Drawing.Point(143, 388);
             this.lblCodigoAleman.Name = "lblCodigoAleman";
-            this.lblCodigoAleman.Size = new System.Drawing.Size(117, 20);
+            this.lblCodigoAleman.Size = new System.Drawing.Size(147, 25);
             this.lblCodigoAleman.TabIndex = 33;
             this.lblCodigoAleman.Text = "Código Alemán";
             // 
@@ -196,32 +196,32 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(194, 329);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(0, 20);
+            this.label9.Size = new System.Drawing.Size(0, 25);
             this.label9.TabIndex = 38;
             // 
-            // txtCodigoEspañol
+            // txtCodigo
             // 
-            this.txtCodigoEspañol.Location = new System.Drawing.Point(292, 157);
-            this.txtCodigoEspañol.Name = "txtCodigoEspañol";
-            this.txtCodigoEspañol.Size = new System.Drawing.Size(133, 26);
-            this.txtCodigoEspañol.TabIndex = 37;
+            this.txtCodigo.Location = new System.Drawing.Point(292, 157);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(133, 30);
+            this.txtCodigo.TabIndex = 37;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(183, 160);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 20);
+            this.label10.Size = new System.Drawing.Size(75, 25);
             this.label10.TabIndex = 36;
             this.label10.Text = "Código";
             // 
             // IngresarPalabra
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtCodigoEspañol);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtCodigoAleman);
@@ -267,7 +267,7 @@
         private System.Windows.Forms.TextBox txtCodigoAleman;
         private System.Windows.Forms.Label lblCodigoAleman;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtCodigoEspañol;
+        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label10;
     }
 }
