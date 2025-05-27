@@ -20,10 +20,21 @@ namespace Traductor
             InitializeComponent();
             this.padreForm = padre;
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Ocultar campos de traducciones al iniciar
+            lblCodigoIngles.Visible = false;
+            txtCodigoIngles.Visible = false;
 
+            lblCodigoFrances.Visible = false;
+            txtCodigoFrances.Visible = false;
+
+            lblCodigoAleman.Visible = false;
+            txtCodigoAleman.Visible = false;
+        }
         private async void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPalabra.Text) || string.IsNullOrWhiteSpace(txtCodigo.Text) || cmbIdioma.SelectedItem == null)
+            if (string.IsNullOrWhiteSpace(txtPalabra.Text) || string.IsNullOrWhiteSpace(txtCodigoEspañol.Text) || cmbIdioma.SelectedItem == null)
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -33,34 +44,47 @@ namespace Traductor
             string palabraTexto = txtPalabra.Text;
             int codigo;
 
-            if (!int.TryParse(txtCodigo.Text, out codigo))
+            if (!int.TryParse(txtCodigoEspañol.Text, out codigo))
             {
                 MessageBox.Show("El código debe ser un número entero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             Palabras nuevaPalabra = new Palabras();
+            nuevaPalabra.Palabra = palabraTexto;
+
+            // Inicializamos todos los ID como 0
+            nuevaPalabra.Id_ingles = 0;
+            nuevaPalabra.Id_frances = 0;
+            nuevaPalabra.Id_aleman = 0;
 
             switch (idioma)
             {
                 case "Español":
-                    nuevaPalabra.Palabra = palabraTexto;
-                    nuevaPalabra.Id_ingles = 0;
-                    nuevaPalabra.Id_frances = 0;
-                    nuevaPalabra.Id_aleman = 0;
+                    // Si la palabra es en español, usamos los códigos de los significados en otros idiomas
+                    int idIng = 0, idFra = 0, idAle = 0;
+
+                    int.TryParse(txtCodigoIngles.Text, out idIng);
+                    int.TryParse(txtCodigoFrances.Text, out idFra);
+                    int.TryParse(txtCodigoAleman.Text, out idAle);
+
+                    nuevaPalabra.Id_ingles = idIng;
+                    nuevaPalabra.Id_frances = idFra;
+                    nuevaPalabra.Id_aleman = idAle;
                     break;
+
                 case "Ingles":
-                    nuevaPalabra.Palabra = palabraTexto;
                     nuevaPalabra.Id_ingles = codigo;
                     break;
+
                 case "Frances":
-                    nuevaPalabra.Palabra = palabraTexto;
                     nuevaPalabra.Id_frances = codigo;
                     break;
+
                 case "Aleman":
-                    nuevaPalabra.Palabra = palabraTexto;
                     nuevaPalabra.Id_aleman = codigo;
                     break;
+
                 default:
                     MessageBox.Show("Idioma no reconocido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -68,7 +92,7 @@ namespace Traductor
 
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:53311/api/palabras/");
+                client.BaseAddress = new Uri("http://localhost:53311/api/palabras/Insertar");
                 try
                 {
                     string json = JsonConvert.SerializeObject(nuevaPalabra);
@@ -80,7 +104,10 @@ namespace Traductor
                     {
                         MessageBox.Show("Palabra registrada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtPalabra.Clear();
-                        txtCodigo.Clear();
+                        txtCodigoEspañol.Clear();
+                        txtCodigoIngles.Clear();
+                        txtCodigoFrances.Clear();
+                        txtCodigoAleman.Clear();
                     }
                     else
                     {
@@ -109,6 +136,20 @@ namespace Traductor
                 this.Hide();
                 padreForm.Show();
             }
+        }
+
+        private void cmbIdioma_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool esEspanol = cmbIdioma.SelectedItem.ToString() == "Español";
+
+            lblCodigoIngles.Visible = esEspanol;
+            txtCodigoIngles.Visible = esEspanol;
+
+            lblCodigoFrances.Visible = esEspanol;
+            txtCodigoFrances.Visible = esEspanol;
+
+            lblCodigoAleman.Visible = esEspanol;
+            txtCodigoAleman.Visible = esEspanol;
         }
     }
 }
