@@ -89,13 +89,13 @@ namespace Traductor
             }
 
             string idioma = cmbIdioma.SelectedItem.ToString();
-            string url = $"http://localhost:53311/api/palabras/traduccion";
+            string url = "http://localhost:53311/api/palabras/Actualizar";
 
             Traduccion traduccion = new Traduccion
             {
                 Codigo = codigo,
                 Palabra = txtPalabra.Text,
-                Sinonimos = new List<string>() // si aún no capturas sinónimos, se envía una lista vacía
+                Sinonimos = new List<string>() 
             };
 
             try
