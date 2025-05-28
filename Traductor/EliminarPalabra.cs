@@ -81,48 +81,50 @@ namespace Traductor
 
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:53311/api/palabras/traduccion/"); 
-                try
-                {
+                client.BaseAddress = new Uri("http://localhost:53311/api/palabras/traduccion/");
+                
                     var jsonContent = JsonConvert.SerializeObject(palabraEliminar);
                     var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-            // Construir objeto Palabras según idioma (solo se necesita el campo de código correspondiente)
-            switch (idioma)
-            {
-                case "Español":
-                    objPalabra = new Palabras(id, "");
-                    break;
-                case "Ingles":
-                    objPalabra = new Palabras(0, "") { Id_ingles = id };
-                    break;
-                case "Frances":
-                    objPalabra = new Palabras(0, "") { Id_frances = id };
-                    break;
-                case "Aleman":
-                    objPalabra = new Palabras(0, "") { Id_aleman = id };
-                    break;
-                default:
-                    MessageBox.Show("Idioma no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-            }
+                    // Construir objeto Palabras según idioma (solo se necesita el campo de código correspondiente)
+                    /* switch (idioma)
+                     {
+                         case "Español":
+                             objPalabra = new Palabras(id, "");
+                             break;
+                         case "Ingles":
+                             objPalabra = new Palabras(0, "") { Id_ingles = id };
+                             break;
+                         case "Frances":
+                             objPalabra = new Palabras(0, "") { Id_frances = id };
+                             break;
+                         case "Aleman":
+                             objPalabra = new Palabras(0, "") { Id_aleman = id };
+                             break;
+                         default:
+                             MessageBox.Show("Idioma no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                             return;
+                     }
 
-            string urlAPI = "http://localhost:53311/api/palabras/Eliminar";
-            string json = JsonConvert.SerializeObject(objPalabra);
-            dynamic respuesta = DBApi.Delete(urlAPI, json);
 
-            if (respuesta == 1)
-            {
-                MessageBox.Show("La eliminación de la palabra fue exitosa", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtCodigo.Clear();
-                txtPalabra.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Falló la eliminación de la palabra, revise la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                     string urlAPI = "http://localhost:53311/api/palabras/Eliminar";
+                     string json = JsonConvert.SerializeObject(objPalabra);
+                     dynamic respuesta = DBApi.Delete(urlAPI, json);
+
+                     if (respuesta == 1)
+                     {
+                         MessageBox.Show("La eliminación de la palabra fue exitosa", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                         txtCodigo.Clear();
+                         txtPalabra.Clear();
+                     }
+                     else
+                     {
+                         MessageBox.Show("Falló la eliminación de la palabra, revise la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     }
+                                 
+                */
         }
-
+           }
         private void btnSalir_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show(

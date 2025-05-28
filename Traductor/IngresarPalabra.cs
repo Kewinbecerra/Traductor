@@ -36,23 +36,31 @@ namespace Traductor
 
         public Palabras leerPalabras()
         {
+            int id = int.Parse(txtCodigo.Text);
+            string palabra = txtPalabra.Text;
+
+            // Valores nulos por defecto
+            int? id_ingles = null;
+            int? id_frances = null;
+            int? id_aleman = null;
+
             if (cmbIdioma.Text == "Español")
             {
-                int id = Int32.Parse(txtCodigo.Text);
-                string palabra = txtPalabra.Text;
-                int id_ingles = Int32.Parse(txtCodigoIngles.Text);
-                int id_frances = Int32.Parse(txtCodigoFrances.Text);
-                int id_aleman = Int32.Parse(txtCodigoAleman.Text);
-                Palabras objPalabra = new Palabras(id, palabra,id_ingles,id_frances,id_aleman);
-                return objPalabra;
+                id_ingles = int.Parse(txtCodigoIngles.Text);
+                id_frances = int.Parse(txtCodigoFrances.Text);
+                id_aleman = int.Parse(txtCodigoAleman.Text);
             }
-            else
+
+            Palabras objPalabra = new Palabras()
             {
-                int id = Int32.Parse(txtCodigo.Text);
-                string palabra = txtPalabra.Text;
-                Palabras objPalabra = new Palabras(id, palabra);
-                return objPalabra;
-            }
+                Id = id,
+                Palabra = palabra,
+                Id_ingles = id_ingles,
+                Id_frances = id_frances,
+                Id_aleman = id_aleman
+            };
+
+            return objPalabra;
         }
 
 
@@ -64,13 +72,13 @@ namespace Traductor
                 Palabras objPalabra = leerPalabras(); // Tu método ya creado
                 string json = JsonConvert.SerializeObject(objPalabra);
 
-                string urlAPI = "http://localhost:53311/api/palabras/Insertar";
-                var respuesta = DBApi.Post(urlAPI, json);
+                string urlAPI = $"http://localhost:53311/api/palabras/Insertar/{cmbIdioma.Text}";
+                int respuesta = DBApi.Post(urlAPI, json);
 
-                JObject jsonRespuesta = JObject.Parse(respuesta.ToString());
+ 
 
                 // Verificar que el campo "resultado" exista y tenga el valor esperado
-                if (respuesta.ToString() == "1")
+                if (respuesta == 1)
                 {
                     MessageBox.Show("La palabra fue registrada exitosamente.");
                     txtCodigo.Clear();

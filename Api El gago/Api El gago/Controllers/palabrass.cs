@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Api_El_gago.Controllers
 {
-    public class Palabras
+    public class Palabrass
     {
        
             public int Id { get; set; }

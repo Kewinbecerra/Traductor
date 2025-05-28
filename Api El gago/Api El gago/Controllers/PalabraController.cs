@@ -128,33 +128,88 @@ namespace Api_El_gago.Controllers
             }
         }
         [HttpPost]
-        [Route("Insertar")]
-        public HttpResponseMessage Post([FromBody] Palabras palabras,string idioma)
+        [Route("Insertar/{idioma}")]
+        public HttpResponseMessage Post([FromBody] Palabrass palabras,string idioma)
         {
-          
-            EntityState entidad = EntityState.Added;
-            return opercion(palabras, entidad);
+            try
+            {
+                int resp = 0;
+                using (var ctx = new idiomasEntities())
+                {
+                    switch (idioma)
+                    {
+                        case "Español":
+                            español esp = new español
+                            {
+                                codigo = palabras.Id,
+                                Palabra = palabras.Palabra,
+                                codigoingles = palabras.Id_ingles,
+                                codigoaleman = palabras.Id_aleman,
+                                codigofrances = palabras.Id_frances
+                            };
+                            ctx.español.Add(esp);
+                            break;
+
+                        case "Ingles":
+                            Ingles ing = new Ingles
+                            {
+                                codigo = palabras.Id,
+                                Palabra = palabras.Palabra
+                            };
+                            ctx.Ingles.Add(ing);
+                            break;
+
+                        case "Aleman":
+                            Aleman ale = new Aleman
+                            {
+                                codigo = palabras.Id,
+                                Palabra = palabras.Palabra
+                            };
+                            ctx.Aleman.Add(ale);
+                            break;
+
+                        case "Frances":
+                            Frances fra = new Frances
+                            {
+                                codigo = palabras.Id,
+                                Palabra = palabras.Palabra
+                            };
+                            ctx.Frances.Add(fra);
+                            break;
+
+                        default:
+                            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Idioma no válido");
+                    }
+
+                    resp = ctx.SaveChanges();
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
 
         }
         [HttpPut]
-        [Route("Actualizar")]
-        public HttpResponseMessage Put([FromBody] Palabras palabras)
+        [Route("Actualizar/idioma")]
+        public HttpResponseMessage Put([FromBody] Palabrass palabras,string idioma)
         {
-
-            EntityState entidad = EntityState.Modified;
-            return opercion(palabras, entidad);
+            return null;
+            
 
         }
         [HttpDelete]
         [Route("DELETE")]
-        public HttpResponseMessage Delete([FromBody] Palabras palabras)
+        public HttpResponseMessage Delete([FromBody] Palabrass palabras)
         {
 
             EntityState entidad = EntityState.Deleted;
             return opercion(palabras, entidad);
 
         }
-        private HttpResponseMessage opercion([FromBody] Palabras objpalabra, EntityState operacion)
+        private HttpResponseMessage opercion([FromBody] Palabrass objpalabra, EntityState operacion)
         {
             int resp = 0;
             HttpResponseMessage objMenRespuesta = null;

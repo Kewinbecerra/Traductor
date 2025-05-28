@@ -63,7 +63,7 @@ namespace Traductor
                     objPedido.AddHeader("Authorization", autorizacion);
                 }
                 RestResponse objRespuesta = objCliente.Execute(objPedido);
-                dynamic datos = JsonConvert.DeserializeObject(objRespuesta.Content);
+                 int datos = int.Parse(objRespuesta.Content);
                 return datos;
             }
             catch (Exception ex)
