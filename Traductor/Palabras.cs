@@ -16,7 +16,7 @@ namespace Traductor
             Id_frances = id_frances;
             Id_aleman = id_aleman;
         }
-
+        public Palabras() { }
         public Palabras(int id, string palabra)
         {
             Id = id;

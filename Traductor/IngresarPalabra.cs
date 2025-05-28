@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,30 +57,39 @@ namespace Traductor
 
 
 
-        private  void btnRegistrar_Click(object sender, EventArgs e)
+        private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            Palabras objPalabra = leerPalabras(); // Usas tu método ya creado
-            string json = JsonConvert.SerializeObject(objPalabra);
-
-            string urlAPI = "http://localhost:53311/api/palabras/Insertar";
-            dynamic respuesta = DBApi.Post(urlAPI, json);
-
-
-            if (respuesta == 1)
+            try
             {
-                MessageBox.Show("La palabra fue registrada exitosamente.");
-                // Aquí puedes limpiar los campos si deseas
-                txtCodigo.Clear();
-                txtPalabra.Clear();
-                txtCodigoIngles.Clear();
-                txtCodigoFrances.Clear();
-                txtCodigoAleman.Clear();
+                Palabras objPalabra = leerPalabras(); // Tu método ya creado
+                string json = JsonConvert.SerializeObject(objPalabra);
+
+                string urlAPI = "http://localhost:53311/api/palabras/Insertar";
+                var respuesta = DBApi.Post(urlAPI, json);
+
+                JObject jsonRespuesta = JObject.Parse(respuesta.ToString());
+
+                // Verificar que el campo "resultado" exista y tenga el valor esperado
+                if (respuesta.ToString() == "1")
+                {
+                    MessageBox.Show("La palabra fue registrada exitosamente.");
+                    txtCodigo.Clear();
+                    txtPalabra.Clear();
+                    txtCodigoIngles.Clear();
+                    txtCodigoFrances.Clear();
+                    txtCodigoAleman.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Falló el registro de la palabra. Verifique la información.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Falló el registro de la palabra. Verifique la información.");
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {

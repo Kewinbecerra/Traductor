@@ -129,9 +129,9 @@ namespace Api_El_gago.Controllers
         }
         [HttpPost]
         [Route("Insertar")]
-        public HttpResponseMessage Post([FromBody] Palabras palabras)
+        public HttpResponseMessage Post([FromBody] Palabras palabras,string idioma)
         {
-
+          
             EntityState entidad = EntityState.Added;
             return opercion(palabras, entidad);
 
