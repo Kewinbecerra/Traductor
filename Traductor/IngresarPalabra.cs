@@ -64,6 +64,7 @@ namespace Traductor
             string urlAPI = "http://localhost:53311/api/palabras/Insertar";
             dynamic respuesta = DBApi.Post(urlAPI, json);
 
+
             if (respuesta == 1)
             {
                 MessageBox.Show("La palabra fue registrada exitosamente.");
