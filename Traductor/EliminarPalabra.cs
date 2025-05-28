@@ -22,54 +22,59 @@ namespace Traductor
             this.padreForm = padre;
         }
 
-        private async void btnConsultar_Click(object sender, EventArgs e)
+        private void btnConsultar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text) || cmbIdioma.SelectedItem == null)
+            if (cmbIdioma.SelectedItem == null || string.IsNullOrWhiteSpace(txtCodigo.Text))
             {
-                MessageBox.Show("Debe ingresar un código y seleccionar un idioma.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor seleccione un idioma y escriba un código.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             string idioma = cmbIdioma.SelectedItem.ToString();
             string codigo = txtCodigo.Text;
+            string urlAPI = "";
 
-            using (HttpClient client = new HttpClient())
+            // Construir la URL del API según el idioma
+            switch (idioma)
             {
-                client.BaseAddress = new Uri("http://localhost:53311/api/palabras/traduccion/"); 
+                case "Español":
+                    urlAPI = $"http://localhost:53311/api/palabras/BuscarPorId/{codigo}";
+                    break;
+                case "Ingles":
+                    urlAPI = $"http://localhost:53311/api/palabras/BuscarPorIdIngles/{codigo}";
+                    break;
+                case "Frances":
+                    urlAPI = $"http://localhost:53311/api/palabras/BuscarPorIdFrances/{codigo}";
+                    break;
+                case "Aleman":
+                    urlAPI = $"http://localhost:53311/api/palabras/BuscarPorIdAleman/{codigo}";
+                    break;
+                default:
+                    MessageBox.Show("Idioma no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+            }
 
-                try
-                {
-                    HttpResponseMessage response = await client.GetAsync($"Traduccioncodigo/{codigo}/{idioma}");
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var json = await response.Content.ReadAsStringAsync();
-
-                       
-                        dynamic resultado = JsonConvert.DeserializeObject(json);
-                        txtPalabra.Text = resultado.PalabraEs;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró la palabra para el código e idioma especificados.", "No encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al consultar la palabra: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            // Consultar al API usando tu propio método Get
+            dynamic respuesta = DBApi.Get(urlAPI);
+            if (respuesta != null && respuesta.Palabra != null)
+            {
+                txtPalabra.Text = respuesta.Palabra;
+            }
+            else
+            {
+                MessageBox.Show("Palabra no encontrada.", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtPalabra.Clear();
             }
         }
-
-        private async void btnEliminar_Click(object sender, EventArgs e)
+        private  void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPalabra.Text))
+            if (cmbIdioma.SelectedItem == null || string.IsNullOrWhiteSpace(txtCodigo.Text))
             {
-                MessageBox.Show("Debe consultar una palabra antes de eliminarla.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor seleccione un idioma y escriba un código.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Palabras palabraEliminar = new Palabras ()
+            Palabras palabraEliminar = new Palabras
             {
                 Palabra = txtPalabra.Text
             };
@@ -82,30 +87,39 @@ namespace Traductor
                     var jsonContent = JsonConvert.SerializeObject(palabraEliminar);
                     var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-                    var request = new HttpRequestMessage
-                    {
-                        Method = HttpMethod.Delete,
-                        RequestUri = new Uri(client.BaseAddress, "DELETE"),
-                        Content = content
-                    };
+            // Construir objeto Palabras según idioma (solo se necesita el campo de código correspondiente)
+            switch (idioma)
+            {
+                case "Español":
+                    objPalabra = new Palabras(id, "");
+                    break;
+                case "Ingles":
+                    objPalabra = new Palabras(0, "") { Id_ingles = id };
+                    break;
+                case "Frances":
+                    objPalabra = new Palabras(0, "") { Id_frances = id };
+                    break;
+                case "Aleman":
+                    objPalabra = new Palabras(0, "") { Id_aleman = id };
+                    break;
+                default:
+                    MessageBox.Show("Idioma no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+            }
 
-                    HttpResponseMessage response = await client.SendAsync(request);
+            string urlAPI = "http://localhost:53311/api/palabras/Eliminar";
+            string json = JsonConvert.SerializeObject(objPalabra);
+            dynamic respuesta = DBApi.Delete(urlAPI, json);
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Palabra eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtCodigo.Clear();
-                        txtPalabra.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo eliminar la palabra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al eliminar la palabra: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            if (respuesta == 1)
+            {
+                MessageBox.Show("La eliminación de la palabra fue exitosa", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtCodigo.Clear();
+                txtPalabra.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Falló la eliminación de la palabra, revise la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
