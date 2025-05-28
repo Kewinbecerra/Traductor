@@ -39,6 +39,16 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lbCodigo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCodigoAleman = new System.Windows.Forms.TextBox();
+            this.lblCodigoAleman = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCodigoFrances = new System.Windows.Forms.TextBox();
+            this.lblCodigoFrances = new System.Windows.Forms.Label();
+            this.txtCodigoIngles = new System.Windows.Forms.TextBox();
+            this.lblCodigoIngles = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label3
@@ -46,7 +56,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(221, 146);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 20);
+            this.label3.Size = new System.Drawing.Size(70, 25);
             this.label3.TabIndex = 42;
             this.label3.Text = "Idioma";
             // 
@@ -60,17 +70,20 @@
             "Aleman"});
             this.cmbIdioma.Location = new System.Drawing.Point(329, 146);
             this.cmbIdioma.Name = "cmbIdioma";
-            this.cmbIdioma.Size = new System.Drawing.Size(137, 28);
+            this.cmbIdioma.Size = new System.Drawing.Size(137, 33);
             this.cmbIdioma.TabIndex = 41;
+            this.cmbIdioma.SelectedIndexChanged += new System.EventHandler(this.cmbIdioma_SelectedIndexChanged);
             // 
             // btnActualizar
             // 
             this.btnActualizar.Location = new System.Drawing.Point(618, 213);
             this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnActualizar.Size = new System.Drawing.Size(125, 54);
             this.btnActualizar.TabIndex = 40;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Visible = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnSalir
@@ -95,17 +108,17 @@
             // 
             // txtPalabra
             // 
-            this.txtPalabra.Location = new System.Drawing.Point(329, 269);
+            this.txtPalabra.Location = new System.Drawing.Point(329, 198);
             this.txtPalabra.Name = "txtPalabra";
-            this.txtPalabra.Size = new System.Drawing.Size(133, 26);
+            this.txtPalabra.Size = new System.Drawing.Size(133, 30);
             this.txtPalabra.TabIndex = 37;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(216, 269);
+            this.label4.Location = new System.Drawing.Point(221, 203);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 20);
+            this.label4.Size = new System.Drawing.Size(79, 25);
             this.label4.TabIndex = 36;
             this.label4.Text = "Palabra";
             // 
@@ -114,24 +127,26 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(231, 189);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 20);
+            this.label2.Size = new System.Drawing.Size(0, 25);
             this.label2.TabIndex = 35;
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(329, 207);
+            this.txtCodigo.Location = new System.Drawing.Point(329, 252);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(133, 26);
+            this.txtCodigo.Size = new System.Drawing.Size(133, 30);
             this.txtCodigo.TabIndex = 34;
+            this.txtCodigo.Visible = false;
             // 
             // lbCodigo
             // 
             this.lbCodigo.AutoSize = true;
-            this.lbCodigo.Location = new System.Drawing.Point(220, 207);
+            this.lbCodigo.Location = new System.Drawing.Point(221, 252);
             this.lbCodigo.Name = "lbCodigo";
-            this.lbCodigo.Size = new System.Drawing.Size(59, 20);
+            this.lbCodigo.Size = new System.Drawing.Size(75, 25);
             this.lbCodigo.TabIndex = 33;
             this.lbCodigo.Text = "Codigo";
+            this.lbCodigo.Visible = false;
             // 
             // label1
             // 
@@ -140,15 +155,113 @@
             this.label1.Location = new System.Drawing.Point(382, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(290, 39);
+            this.label1.Size = new System.Drawing.Size(278, 38);
             this.label1.TabIndex = 32;
             this.label1.Text = "Actualizar palabra";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(225, 310);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 25);
+            this.label5.TabIndex = 43;
+            this.label5.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(229, 340);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 25);
+            this.label9.TabIndex = 52;
+            this.label9.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(507, 393);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 25);
+            this.label7.TabIndex = 51;
+            // 
+            // txtCodigoAleman
+            // 
+            this.txtCodigoAleman.Location = new System.Drawing.Point(327, 393);
+            this.txtCodigoAleman.Name = "txtCodigoAleman";
+            this.txtCodigoAleman.Size = new System.Drawing.Size(133, 30);
+            this.txtCodigoAleman.TabIndex = 50;
+            this.txtCodigoAleman.Visible = false;
+            // 
+            // lblCodigoAleman
+            // 
+            this.lblCodigoAleman.AutoSize = true;
+            this.lblCodigoAleman.Location = new System.Drawing.Point(178, 399);
+            this.lblCodigoAleman.Name = "lblCodigoAleman";
+            this.lblCodigoAleman.Size = new System.Drawing.Size(147, 25);
+            this.lblCodigoAleman.TabIndex = 49;
+            this.lblCodigoAleman.Text = "Código Alemán";
+            this.lblCodigoAleman.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(525, 340);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 25);
+            this.label6.TabIndex = 48;
+            // 
+            // txtCodigoFrances
+            // 
+            this.txtCodigoFrances.Location = new System.Drawing.Point(327, 337);
+            this.txtCodigoFrances.Name = "txtCodigoFrances";
+            this.txtCodigoFrances.Size = new System.Drawing.Size(133, 30);
+            this.txtCodigoFrances.TabIndex = 47;
+            this.txtCodigoFrances.Visible = false;
+            // 
+            // lblCodigoFrances
+            // 
+            this.lblCodigoFrances.AutoSize = true;
+            this.lblCodigoFrances.Location = new System.Drawing.Point(170, 340);
+            this.lblCodigoFrances.Name = "lblCodigoFrances";
+            this.lblCodigoFrances.Size = new System.Drawing.Size(157, 25);
+            this.lblCodigoFrances.TabIndex = 46;
+            this.lblCodigoFrances.Text = "Código Francés:";
+            this.lblCodigoFrances.Visible = false;
+            // 
+            // txtCodigoIngles
+            // 
+            this.txtCodigoIngles.Location = new System.Drawing.Point(327, 295);
+            this.txtCodigoIngles.Name = "txtCodigoIngles";
+            this.txtCodigoIngles.Size = new System.Drawing.Size(133, 30);
+            this.txtCodigoIngles.TabIndex = 45;
+            this.txtCodigoIngles.Visible = false;
+            // 
+            // lblCodigoIngles
+            // 
+            this.lblCodigoIngles.AutoSize = true;
+            this.lblCodigoIngles.Location = new System.Drawing.Point(178, 295);
+            this.lblCodigoIngles.Name = "lblCodigoIngles";
+            this.lblCodigoIngles.Size = new System.Drawing.Size(138, 25);
+            this.lblCodigoIngles.TabIndex = 44;
+            this.lblCodigoIngles.Text = "Código Inglés:";
+            this.lblCodigoIngles.Visible = false;
+            // 
             // ActualizarPalabra
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtCodigoAleman);
+            this.Controls.Add(this.lblCodigoAleman);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtCodigoFrances);
+            this.Controls.Add(this.lblCodigoFrances);
+            this.Controls.Add(this.txtCodigoIngles);
+            this.Controls.Add(this.lblCodigoIngles);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbIdioma);
             this.Controls.Add(this.btnActualizar);
@@ -182,5 +295,15 @@
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lbCodigo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtCodigoAleman;
+        private System.Windows.Forms.Label lblCodigoAleman;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtCodigoFrances;
+        private System.Windows.Forms.Label lblCodigoFrances;
+        private System.Windows.Forms.TextBox txtCodigoIngles;
+        private System.Windows.Forms.Label lblCodigoIngles;
     }
 }

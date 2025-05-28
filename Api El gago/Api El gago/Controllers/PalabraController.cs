@@ -194,7 +194,7 @@ namespace Api_El_gago.Controllers
         }
         [HttpPut]
         [Route("Actualizar/{idioma}")]
-        public IHttpActionResult Actualizar(string idioma, [FromBody] Palabrass palabra)
+        public HttpResponseMessage Actualizar(string idioma, [FromBody] Palabrass palabra)
         {
             using (idiomasEntities db = new idiomasEntities())
             {
@@ -203,31 +203,46 @@ namespace Api_El_gago.Controllers
                     General_controllers gb = new General_controllers();
 
                     if (palabra == null)
-                        return BadRequest("No se recibió ninguna palabra.");
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No se recibió ninguna palabra.");
 
                     bool actualizado = gb.ActualizarPalabra(db, idioma, palabra);
 
                     if (actualizado)
-                        return Ok(new { resultado = 1 });
+                        return Request.CreateResponse(HttpStatusCode.OK, 1);
                     else
-                        return NotFound();
+                        return Request.CreateResponse(HttpStatusCode.NotFound);
                 }
                 catch (Exception ex)
                 {
-                    return InternalServerError(ex);
+                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
         }
 
         [HttpDelete]
-        [Route("DELETE")]
-        public HttpResponseMessage Delete([FromBody] Palabrass palabras)
+        [Route("Eliminar/{idioma}/{id}")]
+        public HttpResponseMessage Eliminar(string idioma, int id)
         {
+            using (idiomasEntities db = new idiomasEntities())
+            {
+                try
+                {
+                    General_controllers gb = new General_controllers();
+                    bool eliminado = gb.EliminarPalabra(db, idioma, id);
 
-            EntityState entidad = EntityState.Deleted;
-            return opercion(palabras, entidad);
-
+                    if (eliminado)
+                        return Request.CreateResponse(HttpStatusCode.OK, 1);
+                    else
+                        return Request.CreateResponse(HttpStatusCode.NotFound);
+                }
+                catch (Exception ex)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                }
+            }
         }
+
+
         private HttpResponseMessage opercion([FromBody] Palabrass objpalabra, EntityState operacion)
         {
             int resp = 0;

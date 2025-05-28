@@ -113,6 +113,42 @@ namespace Api_El_gago.Models
             db.SaveChanges();
             return true;
         }
+        public bool EliminarPalabra(idiomasEntities db, string idioma, int id)
+        {
+            switch (idioma)
+            {
+                case "Español":
+                    var esp = db.español.Find(id);
+                    if (esp == null) return false;
+                    db.español.Remove(esp);
+                    break;
+
+                case "Ingles":
+                    var ing = db.Ingles.Find(id);
+                    if (ing == null) return false;
+                    db.Ingles.Remove(ing);
+                    break;
+
+                case "Frances":
+                    var fra = db.Frances.Find(id);
+                    if (fra == null) return false;
+                    db.Frances.Remove(fra);
+                    break;
+
+                case "Aleman":
+                    var ale = db.Aleman.Find(id);
+                    if (ale == null) return false;
+                    db.Aleman.Remove(ale);
+                    break;
+
+                default:
+                    return false;
+            }
+
+            db.SaveChanges();
+            return true;
+        }
+
 
     }
 }

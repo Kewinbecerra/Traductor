@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Text.Json;
+using Newtonsoft.Json;
 
 
 
@@ -24,101 +25,65 @@ namespace Traductor
             InitializeComponent();
             this.padreForm = padre;
         }
-
-        private async void btnConsultar_Click(object sender, EventArgs e)
+        public Palabras leerPalabras()
         {
+            int id = int.Parse(txtCodigo.Text);
+            string palabra = txtPalabra.Text;
 
-            if (!int.TryParse(txtCodigo.Text, out int codigo))
+   
+            int? id_ingles = null;
+            int? id_frances = null;
+            int? id_aleman = null;
+
+            if (cmbIdioma.Text == "Español")
             {
-                MessageBox.Show("Ingrese un código válido.");
-                return;
+                id_ingles = int.Parse(txtCodigoIngles.Text);
+                id_frances = int.Parse(txtCodigoFrances.Text);
+                id_aleman = int.Parse(txtCodigoAleman.Text);
             }
 
-            if (cmbIdioma.SelectedItem == null)
+            Palabras objPalabra = new Palabras()
             {
-                MessageBox.Show("Seleccione un idioma.");
-                return;
-            }
-
-            string idioma = cmbIdioma.SelectedItem.ToString();
-            string url = $"http://localhost:53311/api/palabras/traduccioncodigo/{codigo}/{idioma}";
-
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    HttpResponseMessage response = await client.GetAsync(url);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string json = await response.Content.ReadAsStringAsync();
-                        Traduccion traduccion = JsonSerializer.Deserialize<Traduccion>(json);
-                        txtPalabra.Text = traduccion.Palabra;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró la palabra.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-        public class Traduccion
-        {
-
-            public string Palabra { get; set; }
-
-            public List<string> Sinonimos { get; set; }
-            public int Codigo { get; set; }
-
-        }
-        private async void btnActualizar_Click(object sender, EventArgs e)
-        {
-            if (!int.TryParse(txtCodigo.Text, out int codigo))
-            {
-                MessageBox.Show("Ingrese un código válido.");
-                return;
-            }
-
-            if (cmbIdioma.SelectedItem == null)
-            {
-                MessageBox.Show("Seleccione un idioma.");
-                return;
-            }
-
-            string idioma = cmbIdioma.SelectedItem.ToString();
-            string url = "http://localhost:53311/api/palabras/Actualizar";
-
-            Traduccion traduccion = new Traduccion
-            {
-                Codigo = codigo,
-                Palabra = txtPalabra.Text,
-                Sinonimos = new List<string>() 
+                Id = id,
+                Palabra = palabra,
+                Id_ingles = id_ingles,
+                Id_frances = id_frances,
+                Id_aleman = id_aleman
             };
 
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    string json = JsonSerializer.Serialize(traduccion);
-                    HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            return objPalabra;
+        }
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            string palabra = txtPalabra.Text;
 
-                    HttpResponseMessage response = await client.PutAsync(url, content);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Palabra actualizada correctamente.");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Error al actualizar. Código: {response.StatusCode}");
-                    }
-                }
-            }
-            catch (Exception ex)
+            string url = $"http://localhost:53311/api/palabras/Traduccion/{palabra}/{cmbIdioma.Text}";
+            dynamic resultado = DBApi.Get(url);
+
+            if (resultado != null)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Ingrese los valores a actualizar");
+                btnActualizar.Visible = true;
+                txtCodigo.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Esa palabra no se encuentra en nuestra base de datos.");
+            }
+
+        }
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            string url = $"http://localhost:53311/api/palabras/Actualizar/{cmbIdioma.Text}";
+            Palabras objPalabra = leerPalabras();
+            string json = JsonConvert.SerializeObject(objPalabra);
+            int resultado = DBApi.Put(url,json);
+            if (resultado == 1) {
+                MessageBox.Show("Actualización relizada");
+            }
+            else
+            {
+                MessageBox.Show("ERROR DE ACTUALIZACIÓN");
             }
 
         }
@@ -137,6 +102,20 @@ namespace Traductor
                 this.Hide();
                 padreForm.Show();
             }
+        }
+
+        private void cmbIdioma_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool esEspanol = cmbIdioma.SelectedItem.ToString() == "Español";
+
+            lblCodigoIngles.Visible = esEspanol;
+            txtCodigoIngles.Visible = esEspanol;
+
+            lblCodigoFrances.Visible = esEspanol;
+            txtCodigoFrances.Visible = esEspanol;
+
+            lblCodigoAleman.Visible = esEspanol;
+            txtCodigoAleman.Visible = esEspanol;
         }
     }
 }

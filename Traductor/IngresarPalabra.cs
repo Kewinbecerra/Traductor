@@ -23,7 +23,7 @@ namespace Traductor
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Ocultar campos de traducciones al iniciar
+
             lblCodigoIngles.Visible = false;
             txtCodigoIngles.Visible = false;
 
@@ -69,7 +69,7 @@ namespace Traductor
         {
             try
             {
-                Palabras objPalabra = leerPalabras(); // Tu método ya creado
+                Palabras objPalabra = leerPalabras(); 
                 string json = JsonConvert.SerializeObject(objPalabra);
 
                 string urlAPI = $"http://localhost:53311/api/palabras/Insertar/{cmbIdioma.Text}";
@@ -77,7 +77,6 @@ namespace Traductor
 
  
 
-                // Verificar que el campo "resultado" exista y tenga el valor esperado
                 if (respuesta == 1)
                 {
                     MessageBox.Show("La palabra fue registrada exitosamente.");
