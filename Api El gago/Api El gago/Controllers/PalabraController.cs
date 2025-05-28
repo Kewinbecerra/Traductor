@@ -193,13 +193,32 @@ namespace Api_El_gago.Controllers
 
         }
         [HttpPut]
-        [Route("Actualizar/idioma")]
-        public HttpResponseMessage Put([FromBody] Palabrass palabras,string idioma)
+        [Route("Actualizar/{idioma}")]
+        public IHttpActionResult Actualizar(string idioma, [FromBody] Palabrass palabra)
         {
-            return null;
-            
+            using (idiomasEntities db = new idiomasEntities())
+            {
+                try
+                {
+                    General_controllers gb = new General_controllers();
 
+                    if (palabra == null)
+                        return BadRequest("No se recibió ninguna palabra.");
+
+                    bool actualizado = gb.ActualizarPalabra(db, idioma, palabra);
+
+                    if (actualizado)
+                        return Ok(new { resultado = 1 });
+                    else
+                        return NotFound();
+                }
+                catch (Exception ex)
+                {
+                    return InternalServerError(ex);
+                }
+            }
         }
+
         [HttpDelete]
         [Route("DELETE")]
         public HttpResponseMessage Delete([FromBody] Palabrass palabras)

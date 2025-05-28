@@ -32,8 +32,8 @@ namespace Traductor
                 ToolEspañol_Ingles.Enabled = true;
                 españolAlemanToolStripMenuItem.Enabled = true;
                 españolToolStripMenuItem.Enabled = true;
-                palabraEnEspañolToolStripMenuItem.Enabled = true;
-                codigoTool.Enabled = true;
+                palabraEnEspañolToolStripMenuItem.Enabled = false;
+                codigoTool.Enabled = false;
 
             }
             else if (RolUsuario == "Administrador")

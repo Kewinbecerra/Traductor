@@ -75,5 +75,44 @@ namespace Api_El_gago.Models
             };
             return resultado;
         }
+        public bool ActualizarPalabra(idiomasEntities db, string idioma, Palabrass palabra)
+        {
+            switch (idioma)
+            {
+                case "Español":
+                    var esp = db.español.Find(palabra.Id);
+                    if (esp == null) return false;
+                    esp.Palabra = palabra.Palabra;
+                    esp.codigoingles = palabra.Id_ingles;
+                    esp.codigofrances = palabra.Id_frances;
+                    esp.codigoaleman = palabra.Id_aleman;
+                    break;
+
+                case "Ingles":
+                    var ing = db.Ingles.Find(palabra.Id);
+                    if (ing == null) return false;
+                    ing.Palabra = palabra.Palabra;
+                    break;
+
+                case "Frances":
+                    var fra = db.Frances.Find(palabra.Id);
+                    if (fra == null) return false;
+                    fra.Palabra = palabra.Palabra;
+                    break;
+
+                case "Aleman":
+                    var ale = db.Aleman.Find(palabra.Id);
+                    if (ale == null) return false;
+                    ale.Palabra = palabra.Palabra;
+                    break;
+
+                default:
+                    return false;
+            }
+
+            db.SaveChanges();
+            return true;
+        }
+
     }
 }
