@@ -220,15 +220,15 @@ namespace Api_El_gago.Controllers
         }
 
         [HttpDelete]
-        [Route("Eliminar/{idioma}/{id}")]
-        public HttpResponseMessage Eliminar(string idioma, int id)
+        [Route("Eliminar/{idioma}")]
+        public HttpResponseMessage Eliminar([FromBody] Palabrass palabra,string idioma)
         {
             using (idiomasEntities db = new idiomasEntities())
             {
                 try
                 {
                     General_controllers gb = new General_controllers();
-                    bool eliminado = gb.EliminarPalabra(db, idioma, id);
+                    bool eliminado = gb.EliminarPalabra(db, idioma, palabra);
 
                     if (eliminado)
                         return Request.CreateResponse(HttpStatusCode.OK, 1);
@@ -243,25 +243,7 @@ namespace Api_El_gago.Controllers
         }
 
 
-        private HttpResponseMessage opercion([FromBody] Palabrass objpalabra, EntityState operacion)
-        {
-            int resp = 0;
-            HttpResponseMessage objMenRespuesta = null;
-            try
-            {
-                using (idiomasEntities objEntidad = new idiomasEntities())
-                {
-                    objEntidad.Entry(objpalabra).State = operacion;
-                    resp = objEntidad.SaveChanges();
-                    objMenRespuesta = Request.CreateResponse(HttpStatusCode.OK, resp);
-                }
-            }
-            catch (Exception er)
-            {
-                objMenRespuesta = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, er.Message);
-            }
-            return objMenRespuesta;
-        }
+     
     }
 }
 

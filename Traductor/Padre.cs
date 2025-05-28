@@ -59,9 +59,9 @@ namespace Traductor
 
         private void codigoTool_Click(object sender, EventArgs e)
         {
-            PorCodigo porCodigo = new PorCodigo();
-            porCodigo.MdiParent = this;
+            PorCodigo porCodigo = new PorCodigo(this);
             porCodigo.Show();
+            this.Hide();
         }
 
         private void españolAlemanToolStripMenuItem_Click(object sender, EventArgs e)

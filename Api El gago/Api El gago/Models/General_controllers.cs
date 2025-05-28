@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -11,8 +13,7 @@ namespace Api_El_gago.Models
 {
     public class General_controllers  : ApiController
     {
-      
-        //metodo para consultar la palabra para su idioma correspondiente
+  
         public dynamic Consultarfirst(idiomasEntities db, string idioma, string palabra)
         {
             var palabra_español = db.español.FirstOrDefault(x => x.Palabra == palabra);
@@ -113,32 +114,32 @@ namespace Api_El_gago.Models
             db.SaveChanges();
             return true;
         }
-        public bool EliminarPalabra(idiomasEntities db, string idioma, int id)
+        public bool EliminarPalabra(idiomasEntities db, string idioma, Palabrass palabra)
         {
             switch (idioma)
             {
                 case "Español":
-                    var esp = db.español.Find(id);
+                    var esp = db.español.Find(palabra.Id);
                     if (esp == null) return false;
-                    db.español.Remove(esp);
+                    db.Entry(esp).State = EntityState.Deleted;
                     break;
 
                 case "Ingles":
-                    var ing = db.Ingles.Find(id);
+                    var ing = db.Ingles.Find(palabra.Id);
                     if (ing == null) return false;
-                    db.Ingles.Remove(ing);
+                    db.Entry(ing).State = EntityState.Deleted;
                     break;
 
                 case "Frances":
-                    var fra = db.Frances.Find(id);
+                    var fra = db.Frances.Find(palabra.Id);
                     if (fra == null) return false;
-                    db.Frances.Remove(fra);
+                    db.Entry(fra).State = EntityState.Deleted;
                     break;
 
                 case "Aleman":
-                    var ale = db.Aleman.Find(id);
+                    var ale = db.Aleman.Find(palabra.Id);
                     if (ale == null) return false;
-                    db.Aleman.Remove(ale);
+                    db.Entry(ale).State = EntityState.Deleted;
                     break;
 
                 default:

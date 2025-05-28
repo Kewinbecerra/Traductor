@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http.Headers;
+using System.Net;
 
 namespace Traductor
 {
@@ -29,102 +30,87 @@ namespace Traductor
                 MessageBox.Show("Por favor seleccione un idioma y escriba un código.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            string idioma = cmbIdioma.SelectedItem.ToString();
-            string codigo = txtCodigo.Text;
-            string urlAPI = "";
-
-            // Construir la URL del API según el idioma
-            switch (idioma)
+     
+            string url = $"http://localhost:53311/api/palabras/Traduccioncodigo/{txtCodigo.Text}/{cmbIdioma.Text}";
+            dynamic resultado = DBApi.Get(url);
+            if (resultado != null)
             {
-                case "Español":
-                    urlAPI = $"http://localhost:53311/api/palabras/BuscarPorId/{codigo}";
-                    break;
-                case "Ingles":
-                    urlAPI = $"http://localhost:53311/api/palabras/BuscarPorIdIngles/{codigo}";
-                    break;
-                case "Frances":
-                    urlAPI = $"http://localhost:53311/api/palabras/BuscarPorIdFrances/{codigo}";
-                    break;
-                case "Aleman":
-                    urlAPI = $"http://localhost:53311/api/palabras/BuscarPorIdAleman/{codigo}";
-                    break;
-                default:
-                    MessageBox.Show("Idioma no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-            }
 
-            // Consultar al API usando tu propio método Get
-            dynamic respuesta = DBApi.Get(urlAPI);
-            if (respuesta != null && respuesta.Palabra != null)
-            {
-                txtPalabra.Text = respuesta.Palabra;
+                switch (cmbIdioma.Text)
+                {
+                    case "Español":
+                      txtPalabra.Text = resultado.PalabraEs;
+                        break;
+                  
+                    case "Ingles":
+                        txtPalabra.Text = resultado.PalabraIng;
+                        break;
+
+                    case "Aleman":
+                        txtPalabra.Text = resultado.PalabraAl;
+                        break;
+
+                    case "Frances":
+                        txtPalabra.Text = resultado.PalabraFr;
+                        break;
+
+                }
+
             }
             else
             {
-                MessageBox.Show("Palabra no encontrada.", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtPalabra.Clear();
+                MessageBox.Show("No se encontró la traducción.");
             }
         }
-        private  void btnEliminar_Click(object sender, EventArgs e)
+
+        public Palabras leerPalabras()
+        {
+            int id = int.Parse(txtCodigo.Text);
+            string palabra = txtPalabra.Text;
+
+
+            int? id_ingles = null;
+            int? id_frances = null;
+            int? id_aleman = null;
+
+           
+            Palabras objPalabra = new Palabras()
+            {
+                Id = id,
+                Palabra = palabra,
+                Id_ingles = id_ingles,
+                Id_frances = id_frances,
+                Id_aleman = id_aleman
+            };
+           
+            return objPalabra;
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (cmbIdioma.SelectedItem == null || string.IsNullOrWhiteSpace(txtCodigo.Text))
             {
                 MessageBox.Show("Por favor seleccione un idioma y escriba un código.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+   
 
-            Palabras palabraEliminar = new Palabras
+            string url = $"http://localhost:53311/api/palabras/Actualizar/{cmbIdioma.Text}";
+            Palabras objPalabra = leerPalabras();
+            string json = JsonConvert.SerializeObject(objPalabra);
+            int resultado = DBApi.Put(url, json);
+            if (resultado == 1)
             {
-                Palabra = txtPalabra.Text
-            };
-
-            using (HttpClient client = new HttpClient())
+                MessageBox.Show("Eliminación relizada");
+            }
+            else
             {
-                client.BaseAddress = new Uri("http://localhost:53311/api/palabras/traduccion/");
-                
-                    var jsonContent = JsonConvert.SerializeObject(palabraEliminar);
-                    var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-
-                    // Construir objeto Palabras según idioma (solo se necesita el campo de código correspondiente)
-                    /* switch (idioma)
-                     {
-                         case "Español":
-                             objPalabra = new Palabras(id, "");
-                             break;
-                         case "Ingles":
-                             objPalabra = new Palabras(0, "") { Id_ingles = id };
-                             break;
-                         case "Frances":
-                             objPalabra = new Palabras(0, "") { Id_frances = id };
-                             break;
-                         case "Aleman":
-                             objPalabra = new Palabras(0, "") { Id_aleman = id };
-                             break;
-                         default:
-                             MessageBox.Show("Idioma no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                             return;
-                     }
+                MessageBox.Show("ERROR DE Eliminación");
+            }
 
 
-                     string urlAPI = "http://localhost:53311/api/palabras/Eliminar";
-                     string json = JsonConvert.SerializeObject(objPalabra);
-                     dynamic respuesta = DBApi.Delete(urlAPI, json);
 
-                     if (respuesta == 1)
-                     {
-                         MessageBox.Show("La eliminación de la palabra fue exitosa", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                         txtCodigo.Clear();
-                         txtPalabra.Clear();
-                     }
-                     else
-                     {
-                         MessageBox.Show("Falló la eliminación de la palabra, revise la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                     }
-                                 
-                */
+
         }
-           }
         private void btnSalir_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show(
@@ -139,6 +125,11 @@ namespace Traductor
                 this.Hide();
                 padreForm.Show();
             }
+        }
+
+        private void cmbIdioma_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -162,7 +162,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="mestrodetalle.aspx" />
+    <Content Include="Vistas\vista_traducciones.aspx" />
+    <Content Include="Vistas\mestrodetalle.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -256,11 +257,18 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="mestrodetalle.aspx.cs">
+    <Compile Include="Vistas\vista_traducciones.aspx.cs">
+      <DependentUpon>vista_traducciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\vista_traducciones.aspx.designer.cs">
+      <DependentUpon>vista_traducciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\mestrodetalle.aspx.cs">
       <DependentUpon>mestrodetalle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="mestrodetalle.aspx.designer.cs">
+    <Compile Include="Vistas\mestrodetalle.aspx.designer.cs">
       <DependentUpon>mestrodetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">

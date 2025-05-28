@@ -20,10 +20,6 @@ namespace Traductor
         {
             InitializeComponent();
             this.padreForm = padre;
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
             lblCodigoIngles.Visible = false;
             txtCodigoIngles.Visible = false;
 
@@ -33,13 +29,18 @@ namespace Traductor
             lblCodigoAleman.Visible = false;
             txtCodigoAleman.Visible = false;
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+           
+        }
 
         public Palabras leerPalabras()
         {
             int id = int.Parse(txtCodigo.Text);
             string palabra = txtPalabra.Text;
 
-            // Valores nulos por defecto
+
             int? id_ingles = null;
             int? id_frances = null;
             int? id_aleman = null;
