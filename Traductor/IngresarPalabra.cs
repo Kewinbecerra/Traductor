@@ -56,92 +56,27 @@ namespace Traductor
 
 
 
-        private async void btnRegistrar_Click(object sender, EventArgs e)
+        private  void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPalabra.Text) || string.IsNullOrWhiteSpace(txtCodigo.Text) || cmbIdioma.SelectedItem == null)
+            Palabras objPalabra = leerPalabras(); // Usas tu método ya creado
+            string json = JsonConvert.SerializeObject(objPalabra);
+
+            string urlAPI = "http://localhost:53311/api/palabras/Insertar";
+            dynamic respuesta = DBApi.Post(urlAPI, json);
+
+            if (respuesta == 1)
             {
-                MessageBox.Show("Por favor, complete todos los campos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show("La palabra fue registrada exitosamente.");
+                // Aquí puedes limpiar los campos si deseas
+                txtCodigo.Clear();
+                txtPalabra.Clear();
+                txtCodigoIngles.Clear();
+                txtCodigoFrances.Clear();
+                txtCodigoAleman.Clear();
             }
-
-            string idioma = cmbIdioma.SelectedItem.ToString();
-            string palabraTexto = txtPalabra.Text;
-            int codigo;
-
-            if (!int.TryParse(txtCodigo.Text, out codigo))
+            else
             {
-                MessageBox.Show("El código debe ser un número entero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            Palabras nuevaPalabra = new Palabras();
-            nuevaPalabra.Palabra = palabraTexto;
-
-            // Inicializamos todos los ID como 0
-            nuevaPalabra.Id_ingles = 0;
-            nuevaPalabra.Id_frances = 0;
-            nuevaPalabra.Id_aleman = 0;
-
-            switch (idioma)
-            {
-                case "Español":
-                    // Si la palabra es en español, usamos los códigos de los significados en otros idiomas
-                    int idIng = 0, idFra = 0, idAle = 0;
-
-                    int.TryParse(txtCodigoIngles.Text, out idIng);
-                    int.TryParse(txtCodigoFrances.Text, out idFra);
-                    int.TryParse(txtCodigoAleman.Text, out idAle);
-
-                    nuevaPalabra.Id_ingles = idIng;
-                    nuevaPalabra.Id_frances = idFra;
-                    nuevaPalabra.Id_aleman = idAle;
-                    break;
-
-                case "Ingles":
-                    nuevaPalabra.Id_ingles = codigo;
-                    break;
-
-                case "Frances":
-                    nuevaPalabra.Id_frances = codigo;
-                    break;
-
-                case "Aleman":
-                    nuevaPalabra.Id_aleman = codigo;
-                    break;
-
-                default:
-                    MessageBox.Show("Idioma no reconocido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-            }
-
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:53311/api/palabras/Insertar");
-                try
-                {
-                    string json = JsonConvert.SerializeObject(nuevaPalabra);
-                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = await client.PostAsync("Insertar", content);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Palabra registrada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtPalabra.Clear();
-                        txtCodigo.Clear();
-                        txtCodigoIngles.Clear();
-                        txtCodigoFrances.Clear();
-                        txtCodigoAleman.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al registrar palabra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Falló el registro de la palabra. Verifique la información.");
             }
         }
 
